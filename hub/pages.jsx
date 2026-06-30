@@ -61,7 +61,7 @@ function PageHome({ go }) {
           <FadeIn>
             <div className="news-banner"><span className="dot" />{totalTasks} proof tasks · checked by tlapm</div>
             <h1>Can AI write proofs that <em>tlapm accepts</em>?</h1>
-            <p className="lead">A benchmark for evaluating AI's ability to write TLAPS (TLA+ Proof System) proofs — mechanically checked, accepted or rejected, with no partial credit.</p>
+            <p className="lead">A benchmark for evaluating AI's ability to write TLAPS (TLA+ Proof System) proofs, mechanically checked, accepted or rejected, with no partial credit.</p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 28, flexWrap: "wrap" }}>
               <button className="btn primary" onClick={() => go("leaderboard")}>View Leaderboard</button>
               <a className="btn ghost" href="https://github.com/specula-org/tlaps-bench" target="_blank">GitHub</a>
@@ -84,7 +84,7 @@ function PageHome({ go }) {
             </p>
             <p style={{ fontFamily: "var(--serif)", fontSize: 18, lineHeight: 1.75, color: "var(--ink-2)", marginTop: 14, textWrap: "pretty" }}>
               Every accepted proof is also screened by a cheat-checker, so a "pass" means a
-              genuine proof — not a weakened theorem or an admitted step.
+              genuine proof, not a weakened theorem or an admitted step.
             </p>
           </Reveal>
         </div>
@@ -125,9 +125,9 @@ function PageLeaderboard() {
           <span className="eyebrow accent">Results</span>
           <h1 style={{ fontSize: 44, marginTop: 10 }}>Leaderboard</h1>
           <p className="lead" style={{ maxWidth: 720 }}>
-            Pass rate is the share of scored tasks that pass — the proof must be accepted by
-            tlapm and clear the cheat-checker (no admitted steps, smuggled axioms, or weakened
-            theorems). A proof that only "passes" by cheating is counted as a failure. Columns
+            Pass rate is the share of scored tasks that pass, where the proof must be accepted
+            by tlapm and clear the cheat-checker (no admitted steps, smuggled axioms, or
+            weakened theorems). A proof that only "passes" by cheating is counted as a failure. Columns
             split by task type; click any row to expand the per-source breakdown, filter by
             organization, or switch between LLM-only and agent runs.
           </p>
@@ -169,7 +169,7 @@ function PageBenchmark() {
             <h1 style={{ fontSize: 44, marginTop: 10 }}>Inside the benchmark</h1>
             <p className="lead" style={{ maxWidth: 760 }}>
               Every task is a TLA+ theorem whose proof has been replaced by PROOF OBVIOUS. The
-              AI must produce a proof body that tlapm mechanically accepts — drawn from eight
+              AI must produce a proof body that tlapm mechanically accepts, drawn from eight
               real-world sources.
             </p>
           </FadeIn>
@@ -245,7 +245,7 @@ function PageBenchmark() {
             <h2 style={{ fontSize: 32 }}>How a proof is graded</h2>
             <p className="lead" style={{ fontSize: 17 }}>
               Each candidate proof is graded inside a Docker sandbox in two passes: tlapm checks
-              that the proof is correct, and a cheat-checker confirms it's legitimate — no
+              that the proof is correct, and a cheat-checker confirms it's legitimate, with no
               admitted steps, smuggled axioms, or weakened theorems. A proof that "passes" by
               cheating is scored as a failure, not a pass.
             </p>
@@ -271,7 +271,7 @@ function PageCite() {
             <a className="link" href="https://github.com/specula-org/tlaps-bench/blob/main/docs/USAGE.md" target="_blank">usage guide</a>.
           </p>
           <p style={{ fontFamily: "var(--serif)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)", marginTop: 12 }}>
-            New benchmark sources, agents, and bug reports are welcome — open an issue to discuss.
+            New benchmark sources, agents, and bug reports are welcome, open an issue to discuss.
           </p>
           <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
             <a className="btn primary" href="https://github.com/specula-org/tlaps-bench" target="_blank">Open a PR</a>

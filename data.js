@@ -19,9 +19,9 @@ window.TLAPS_DATA = {
   modes: [
     { id: "completion", name: "Completion", full: "Proof completion",
       cli: "--mode auto-complete",
-      blurb: "The full scaffolding — inductive invariants, lemma decomposition, and " +
-             "preceding lemmas marked PROOF OMITTED — is given, and the AI fills in one " +
-             "target proof." },
+      blurb: "The full scaffolding is given, including inductive invariants, lemma " +
+             "decomposition, and preceding lemmas marked PROOF OMITTED, and the AI fills " +
+             "in one target proof." },
     { id: "scratch", name: "From scratch", full: "Proof from scratch",
       cli: "--mode synthesis-from-scratch",
       blurb: "Only the model and the target theorem statement remain; the AI must invent " +

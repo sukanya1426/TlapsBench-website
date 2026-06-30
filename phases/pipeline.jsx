@@ -80,7 +80,7 @@ PROOF OBVIOUS`}
           }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, textTransform: 'uppercase', letterSpacing: 0.5 }}>tlapm result</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: PFS.body, color: P.ok, fontWeight: 700 }}>✓ accepted</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, lineHeight: 1.3 }}>obligations proved — not yet a pass</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, lineHeight: 1.3 }}>obligations proved, not yet a pass</span>
           </div>
         </div>
 

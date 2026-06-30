@@ -157,7 +157,7 @@ function HubLeaderboard({ showFilters = true }) {
                       <div className={"expand-body" + (isOpen ? " on" : "")}>
                         <div className="inner">
                           <div className="pad">
-                            <div className="eyebrow" style={{ marginBottom: 14 }}>Per-source pass rate — {m.name}</div>
+                            <div className="eyebrow" style={{ marginBottom: 14 }}>Per-source pass rate, {m.name}</div>
                             <div className="taskbars">
                               {TLAPS_DATA.sources.map((s, si) => {
                                 const v = m.perSource?.[s.id];
