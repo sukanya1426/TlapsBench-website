@@ -228,8 +228,7 @@ function PageBenchmark() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16, marginTop: 24 }}>
               {TLAPS_DATA.modes.map((md) => (
                 <div key={md.id} className="card">
-                  <span className="eyebrow accent" style={{ display: "block" }}>{md.cli}</span>
-                  <h3 style={{ marginTop: 10 }}>{md.full}</h3>
+                  <span className="eyebrow accent" style={{ display: "block", marginBottom: 12 }}>{md.cli}</span>
                   <p style={{ margin: 0, fontSize: 16 }}>{md.blurb}</p>
                 </div>
               ))}

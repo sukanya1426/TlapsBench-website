@@ -17,13 +17,13 @@ window.TLAPS_DATA = {
 
   // Leaderboard middle columns.
   modes: [
-    { id: "completion", name: "Completion", full: "Proof completion",
-      cli: "--mode auto-complete",
+    { id: "completion", name: "--mode proof-completion", full: "--mode proof-completion",
+      cli: "--mode proof-completion",
       blurb: "The full scaffolding is given, including inductive invariants, lemma " +
              "decomposition, and preceding lemmas marked PROOF OMITTED, and the AI fills " +
              "in one target proof." },
-    { id: "scratch", name: "From scratch", full: "Proof from scratch",
-      cli: "--mode synthesis-from-scratch",
+    { id: "scratch", name: "--mode proof-from-scratch", full: "--mode proof-from-scratch",
+      cli: "--mode proof-from-scratch",
       blurb: "Only the model and the target theorem statement remain; the AI must invent " +
              "the entire proof structure, including any helper lemmas." }
   ],
