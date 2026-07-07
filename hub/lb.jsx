@@ -13,6 +13,9 @@ function OrgDot({ org, logo }) {
 }
 
 function HubLeaderboard({ showFilters = true }) {
+  const metricById = useM_lb(() => Object.fromEntries(TLAPS_DATA.metrics.map(m => [m.id, m])), []);
+  const isInvert = (key) => key.startsWith("metric:") && metricById[key.slice(7)]?.invert;
+
   const [sort, setSort] = useS_lb({ key: "score", dir: "desc" });
   const [expanded, setExpanded] = useS_lb(null);
   const [orgFilter, setOrgFilter] = useS_lb("All");
@@ -20,8 +23,8 @@ function HubLeaderboard({ showFilters = true }) {
 
   const orgs = ["All", ...new Set(TLAPS_DATA.models.map(m => m.org))];
 
-  // sort key forms: "name", "score", or "mode:<id>"
-  const getVal = (m, key) => key.startsWith("mode:") ? (m.perMode?.[key.slice(5)] ?? null) : m[key];
+  // sort key forms: "name", "score", or "metric:<id>"
+  const getVal = (m, key) => key.startsWith("metric:") ? (m.perMetric?.[key.slice(7)] ?? null) : m[key];
 
   const rows = useM_lb(() => {
     let arr = TLAPS_DATA.models.filter(m => orgFilter === "All" || m.org === orgFilter);
@@ -39,7 +42,11 @@ function HubLeaderboard({ showFilters = true }) {
 
   const onSort = (key) => {
     setExpanded(null);
-    setSort(s => ({ key, dir: s.key === key && s.dir === "desc" ? "asc" : "desc" }));
+    setSort(s => {
+      if (s.key === key) return { key, dir: s.dir === "desc" ? "asc" : "desc" };
+      // lower-is-better columns (cheating) start ascending; everything else descending.
+      return { key, dir: isInvert(key) ? "asc" : "desc" };
+    });
   };
   const sortCls = (k) => sort.key === k ? "sorted" + (sort.dir === "asc" ? " sorted-asc" : "") : "";
   const scored = TLAPS_DATA.models.filter(m => m.score != null);
@@ -74,7 +81,7 @@ function HubLeaderboard({ showFilters = true }) {
     lastKeyRef.current = { k: sort.key, d: sort.dir, f: orgFilter, kd: kindFilter };
   });
 
-  const colCount = 3 + TLAPS_DATA.modes.length; // #, Model, [modes], Overall, caret
+  const colCount = 3 + TLAPS_DATA.metrics.length; // #, Model, [metrics], Overall, caret
 
   return (
     <div>
@@ -100,15 +107,15 @@ function HubLeaderboard({ showFilters = true }) {
             <tr>
               <th className="rank">#</th>
               <th className={sortCls("name")} onClick={() => onSort("name")}>Model <span className="sort">▾</span></th>
-              {TLAPS_DATA.modes.map(md => {
-                const k = "mode:" + md.id;
+              {TLAPS_DATA.metrics.map(mt => {
+                const k = "metric:" + mt.id;
                 return (
-                  <th key={md.id} className={sortCls(k)} onClick={() => onSort(k)} style={{ textAlign: "right" }} title={md.full}>
-                    {md.name} <span className="sort">▾</span>
+                  <th key={mt.id} className={sortCls(k)} onClick={() => onSort(k)} style={{ textAlign: "right" }} title={mt.blurb}>
+                    {mt.name}{mt.invert ? " ↓" : ""} <span className="sort">▾</span>
                   </th>
                 );
               })}
-              <th className={sortCls("score")} onClick={() => onSort("score")} style={{ textAlign: "right" }}>Overall <span className="sort">▾</span></th>
+              <th className={sortCls("score")} onClick={() => onSort("score")} style={{ textAlign: "right" }} title="Unweighted mean of the two mode pass rates.">Overall <span className="sort">▾</span></th>
               <th style={{ width: 32 }}></th>
             </tr>
           </thead>
@@ -127,17 +134,17 @@ function HubLeaderboard({ showFilters = true }) {
                     }</span></td>
                     <td>
                       <div className="modelname">
-                        <OrgDot org={m.org} logo={m.logo} />
+                        {m.logo && <OrgDot org={m.org} logo={m.logo} />}
                         <div className="modelname-text">
                           <div className="modelname-main">{m.name}</div>
                           {m.subname && <div className="modelname-sub">{m.subname}</div>}
                         </div>
                       </div>
                     </td>
-                    {TLAPS_DATA.modes.map(md => {
-                      const v = m.perMode?.[md.id];
+                    {TLAPS_DATA.metrics.map(mt => {
+                      const v = m.perMetric?.[mt.id];
                       return (
-                        <td key={md.id} style={{ textAlign: "right", fontFamily: "var(--mono)", fontSize: 13 }}>
+                        <td key={mt.id} style={{ textAlign: "right", fontFamily: "var(--mono)", fontSize: 13, color: mt.invert ? "var(--ink-2)" : "var(--ink)" }}>
                           {v == null ? <span style={{ color: "var(--ink-3)" }}>—</span> : v.toFixed(1)}
                         </td>
                       );
@@ -158,16 +165,30 @@ function HubLeaderboard({ showFilters = true }) {
                         <div className="inner">
                           <div className="pad">
                             <div className="eyebrow" style={{ marginBottom: 14 }}>Per-source pass rate, {m.name}</div>
-                            <div className="taskbars">
-                              {TLAPS_DATA.sources.map((s, si) => {
-                                const v = m.perSource?.[s.id];
+                            <div className="taskbars" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+                              {TLAPS_DATA.tasks.map((t, si) => {
+                                const v = m.perTask?.[t.id];
                                 return (
-                                  <div className="taskbar" key={s.id}>
-                                    <span className="tname">{s.name}</span>
+                                  <div className="taskbar" key={t.id} style={{ gridTemplateColumns: "150px 1fr auto", alignItems: "center" }}>
+                                    <span className="tname">{t.name}</span>
                                     {v == null
-                                      ? <span style={{display:"inline-block",width:"100%",height:8}} />
-                                      : (isOpen ? <AnimBar pct={v} delay={si * 40} height={8} /> : <span style={{display:"inline-block",width:"100%",height:8}} />)}
-                                    <span className="val">{v == null ? "—" : v.toFixed(1)}</span>
+                                      ? <span style={{ display: "inline-block", width: "100%", height: 8 }} />
+                                      : (isOpen
+                                          ? <AnimBar pct={v.rate} delay={si * 40} height={8} show />
+                                          : <span style={{ display: "inline-block", width: "100%", height: 8 }} />)}
+                                    <span className="val" style={{ minWidth: 92, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3 }}>
+                                      {v == null ? "—" : (
+                                        <>
+                                          <span><span style={{ fontWeight: 600 }}>{v.rate.toFixed(1)}%</span> <span style={{ color: "var(--ink-3)", fontWeight: 400, fontSize: 11 }}>{v.pass}/{v.total}</span></span>
+                                          {v.cheat > 0 && (
+                                            <span title={`${v.cheat} of ${v.total} flagged by the cheat-checker`}
+                                              style={{ display: "inline-flex", alignItems: "center", gap: 4, padding: "1px 7px", borderRadius: 999, background: "rgba(245,158,11,0.14)", color: "var(--warn)", fontSize: 10, fontWeight: 600 }}>
+                                              ⚑ {v.cheat} cheated
+                                            </span>
+                                          )}
+                                        </>
+                                      )}
+                                    </span>
                                   </div>
                                 );
                               })}

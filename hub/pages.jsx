@@ -127,9 +127,10 @@ function PageLeaderboard() {
           <p className="lead" style={{ maxWidth: 720 }}>
             Pass rate is the share of scored tasks that pass, where the proof must be accepted
             by tlapm and clear the cheat-checker (no admitted steps, smuggled axioms, or
-            weakened theorems). A proof that only "passes" by cheating is counted as a failure. Columns
-            split by task type; click any row to expand the per-source breakdown, filter by
-            organization, or switch between LLM-only and agent runs.
+            weakened theorems). The two mode columns split by task type and Overall is their
+            mean; the Cheating column is the share of tasks flagged as gamed (lower is better).
+            Click any row to expand the per-source breakdown, filter by organization, or switch
+            between LLM-only and agent runs.
           </p>
         </FadeIn>
         <div style={{ marginTop: 32 }}><HubLeaderboard /></div>

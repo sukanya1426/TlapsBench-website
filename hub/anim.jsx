@@ -71,8 +71,18 @@ function CountUp({ to, duration = 1200, decimals = 0, suffix = "", prefix = "" }
   return <span ref={ref}>{prefix}{val.toFixed(decimals)}{suffix}</span>;
 }
 
-function AnimBar({ pct, color, height = 6, bg, delay = 0 }) {
-  const [ref, on] = useReveal();
+function AnimBar({ pct, color, height = 6, bg, delay = 0, show }) {
+  const [ref, revealed] = useReveal();
+  // When `show` is passed, drive the fill from it instead of the scroll observer.
+  // The observer can't see bars inside a collapsed, overflow-hidden expand row, so
+  // reveal-on-scroll leaves them stuck at 0%. A one-tick delay lets 0% -> pct% animate.
+  const [ticked, setTicked] = useState(false);
+  useEffect(() => {
+    if (show === undefined) return;
+    const id = setTimeout(() => setTicked(true), 20);
+    return () => clearTimeout(id);
+  }, [show]);
+  const on = show === undefined ? revealed : (show && ticked);
   return (
     <span ref={ref} style={{
       display: "inline-block", width: "100%", height,
