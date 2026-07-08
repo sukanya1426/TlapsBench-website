@@ -17,12 +17,6 @@ window.TLAPS_DATA = {
       "id": "scratch",
       "name": "--mode proof-from-scratch",
       "blurb": "Pass rate on the 231 proof-from-scratch tasks."
-    },
-    {
-      "id": "cheating",
-      "name": "Cheating",
-      "invert": true,
-      "blurb": "Share of all 714 tasks the checker flagged as gamed. Lower is better."
     }
   ],
   "tasks": [
@@ -79,65 +73,116 @@ window.TLAPS_DATA = {
       "score": 85.7,
       "perMetric": {
         "completion": 91.3,
-        "scratch": 80.1,
-        "cheating": 0.8
+        "scratch": 80.1
       },
       "perTask": {
         "tlaps-distribution-examples": {
           "rate": 96.3,
           "pass": 154,
           "fail": 6,
-          "cheat": 0,
-          "total": 160
+          "total": 160,
+          "completion": {
+            "rate": 94.2,
+            "pass": 97,
+            "total": 103
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 57,
+            "total": 57
+          }
         },
         "openaddressing-lemmy-examples": {
           "rate": 33.3,
           "pass": 2,
           "fail": 4,
-          "cheat": 0,
-          "total": 6
+          "total": 6,
+          "completion": {
+            "rate": 0,
+            "pass": 0,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 40,
+            "pass": 2,
+            "total": 5
+          }
         },
         "tlaplus-examples": {
           "rate": 91.3,
           "pass": 461,
-          "fail": 38,
-          "cheat": 6,
-          "total": 505
+          "fail": 44,
+          "total": 505,
+          "completion": {
+            "rate": 90.8,
+            "pass": 344,
+            "total": 379
+          },
+          "scratch": {
+            "rate": 92.9,
+            "pass": 117,
+            "total": 126
+          }
         },
         "abstractraft": {
           "rate": 75,
           "pass": 3,
           "fail": 1,
-          "cheat": 0,
-          "total": 4
+          "total": 4,
+          "completion": null,
+          "scratch": {
+            "rate": 75,
+            "pass": 3,
+            "total": 4
+          }
         },
         "anvil": {
           "rate": 100,
           "pass": 1,
           "fail": 0,
-          "cheat": 0,
-          "total": 1
+          "total": 1,
+          "completion": null,
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
         },
         "zookeeper-remix": {
           "rate": 0,
           "pass": 0,
           "fail": 18,
-          "cheat": 0,
-          "total": 18
+          "total": 18,
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 18
+          }
         },
         "etcd-specula": {
           "rate": 0,
           "pass": 0,
           "fail": 8,
-          "cheat": 0,
-          "total": 8
+          "total": 8,
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 8
+          }
         },
         "ivy-liveness": {
           "rate": 41.7,
           "pass": 5,
           "fail": 7,
-          "cheat": 0,
-          "total": 12
+          "total": 12,
+          "completion": null,
+          "scratch": {
+            "rate": 41.7,
+            "pass": 5,
+            "total": 12
+          }
         }
       }
     },
@@ -152,65 +197,116 @@ window.TLAPS_DATA = {
       "score": 64.9,
       "perMetric": {
         "completion": 69.2,
-        "scratch": 60.6,
-        "cheating": 4.8
+        "scratch": 60.6
       },
       "perTask": {
         "tlaps-distribution-examples": {
           "rate": 75.6,
           "pass": 121,
-          "fail": 34,
-          "cheat": 5,
-          "total": 160
+          "fail": 39,
+          "total": 160,
+          "completion": {
+            "rate": 73.8,
+            "pass": 76,
+            "total": 103
+          },
+          "scratch": {
+            "rate": 78.9,
+            "pass": 45,
+            "total": 57
+          }
         },
         "openaddressing-lemmy-examples": {
           "rate": 16.7,
           "pass": 1,
-          "fail": 4,
-          "cheat": 1,
-          "total": 6
+          "fail": 5,
+          "total": 6,
+          "completion": {
+            "rate": 0,
+            "pass": 0,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 20,
+            "pass": 1,
+            "total": 5
+          }
         },
         "tlaplus-examples": {
           "rate": 68.5,
           "pass": 346,
-          "fail": 131,
-          "cheat": 28,
-          "total": 505
+          "fail": 159,
+          "total": 505,
+          "completion": {
+            "rate": 68.1,
+            "pass": 258,
+            "total": 379
+          },
+          "scratch": {
+            "rate": 69.8,
+            "pass": 88,
+            "total": 126
+          }
         },
         "abstractraft": {
           "rate": 25,
           "pass": 1,
           "fail": 3,
-          "cheat": 0,
-          "total": 4
+          "total": 4,
+          "completion": null,
+          "scratch": {
+            "rate": 25,
+            "pass": 1,
+            "total": 4
+          }
         },
         "anvil": {
           "rate": 100,
           "pass": 1,
           "fail": 0,
-          "cheat": 0,
-          "total": 1
+          "total": 1,
+          "completion": null,
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
         },
         "zookeeper-remix": {
           "rate": 0,
           "pass": 0,
           "fail": 18,
-          "cheat": 0,
-          "total": 18
+          "total": 18,
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 18
+          }
         },
         "etcd-specula": {
           "rate": 0,
           "pass": 0,
           "fail": 8,
-          "cheat": 0,
-          "total": 8
+          "total": 8,
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 8
+          }
         },
         "ivy-liveness": {
           "rate": 33.3,
           "pass": 4,
           "fail": 8,
-          "cheat": 0,
-          "total": 12
+          "total": 12,
+          "completion": null,
+          "scratch": {
+            "rate": 33.3,
+            "pass": 4,
+            "total": 12
+          }
         }
       }
     }
@@ -235,17 +331,17 @@ window.TLAPS_DATA = {
     {
       "id": "tlaplus-examples",
       "name": "tlaplus/Examples",
-      "completion": 381,
+      "completion": 379,
       "scratch": 126,
-      "total": 507,
+      "total": 505,
       "github": "https://github.com/tlaplus/Examples"
     },
     {
       "id": "tlaps-dist",
       "name": "TLAPS distribution examples",
-      "completion": 154,
-      "scratch": 80,
-      "total": 234,
+      "completion": 103,
+      "scratch": 57,
+      "total": 160,
       "github": "https://github.com/tlaplus/tlapm"
     },
     {

@@ -27,10 +27,10 @@ export const SITE = {
              "the entire proof structure, including any helper lemmas." },
   ],
 
-  // Benchmark page: the eight source cards (README canonical benchmark counts).
+  // Benchmark page: the eight source cards (canonical benchmark counts; 483 + 231 = 714).
   sources: [
-    { id: "tlaplus-examples", name: "tlaplus/Examples",            completion: 381, scratch: 126, total: 507, github: "https://github.com/tlaplus/Examples" },
-    { id: "tlaps-dist",       name: "TLAPS distribution examples", completion: 154, scratch:  80, total: 234, github: "https://github.com/tlaplus/tlapm" },
+    { id: "tlaplus-examples", name: "tlaplus/Examples",            completion: 379, scratch: 126, total: 505, github: "https://github.com/tlaplus/Examples" },
+    { id: "tlaps-dist",       name: "TLAPS distribution examples", completion: 103, scratch:  57, total: 160, github: "https://github.com/tlaplus/tlapm" },
     { id: "zookeeper-zab",    name: "ZooKeeper / Zab (Remix)",     completion:   0, scratch:  18, total:  18, github: null },
     { id: "ivy-liveness",     name: "Ivy liveness",                completion:   0, scratch:  12, total:  12, github: null },
     { id: "etcd",             name: "etcd (Specula)",              completion:   0, scratch:   8, total:   8, github: null },

@@ -16,7 +16,7 @@ function HubLeaderboard({ showFilters = true }) {
   const metricById = useM_lb(() => Object.fromEntries(TLAPS_DATA.metrics.map(m => [m.id, m])), []);
   const isInvert = (key) => key.startsWith("metric:") && metricById[key.slice(7)]?.invert;
 
-  const [sort, setSort] = useS_lb({ key: "score", dir: "desc" });
+  const [sort, setSort] = useS_lb({ key: "metric:completion", dir: "desc" });
   const [expanded, setExpanded] = useS_lb(null);
   const [orgFilter, setOrgFilter] = useS_lb("All");
   const [kindFilter, setKindFilter] = useS_lb("All");
@@ -44,13 +44,16 @@ function HubLeaderboard({ showFilters = true }) {
     setExpanded(null);
     setSort(s => {
       if (s.key === key) return { key, dir: s.dir === "desc" ? "asc" : "desc" };
-      // lower-is-better columns (cheating) start ascending; everything else descending.
+      // any lower-is-better column starts ascending; everything else descending.
       return { key, dir: isInvert(key) ? "asc" : "desc" };
     });
   };
   const sortCls = (k) => sort.key === k ? "sorted" + (sort.dir === "asc" ? " sorted-asc" : "") : "";
-  const scored = TLAPS_DATA.models.filter(m => m.score != null);
-  const maxScore = scored.length ? Math.max(...scored.map(m => m.score)) : 100;
+  // Each mode column is scored independently; bars scale to that column's own top score.
+  const metricMax = useM_lb(() => Object.fromEntries(TLAPS_DATA.metrics.map(mt => {
+    const vals = TLAPS_DATA.models.map(m => m.perMetric?.[mt.id]).filter(v => v != null);
+    return [mt.id, vals.length ? Math.max(...vals) : 100];
+  })), []);
 
   // FLIP: slide rows to new positions on sort/filter change.
   const rowRefs = useR_lb({});
@@ -81,7 +84,7 @@ function HubLeaderboard({ showFilters = true }) {
     lastKeyRef.current = { k: sort.key, d: sort.dir, f: orgFilter, kd: kindFilter };
   });
 
-  const colCount = 3 + TLAPS_DATA.metrics.length; // #, Model, [metrics], Overall, caret
+  const colCount = 3 + TLAPS_DATA.metrics.length; // #, Model, [metric columns], caret
 
   return (
     <div>
@@ -111,11 +114,10 @@ function HubLeaderboard({ showFilters = true }) {
                 const k = "metric:" + mt.id;
                 return (
                   <th key={mt.id} className={sortCls(k)} onClick={() => onSort(k)} style={{ textAlign: "right" }} title={mt.blurb}>
-                    {mt.name}{mt.invert ? " ↓" : ""} <span className="sort">▾</span>
+                    {mt.name} <span className="sort">▾</span>
                   </th>
                 );
               })}
-              <th className={sortCls("score")} onClick={() => onSort("score")} style={{ textAlign: "right" }} title="Unweighted mean of the two mode pass rates.">Overall <span className="sort">▾</span></th>
               <th style={{ width: 32 }}></th>
             </tr>
           </thead>
@@ -144,19 +146,16 @@ function HubLeaderboard({ showFilters = true }) {
                     {TLAPS_DATA.metrics.map(mt => {
                       const v = m.perMetric?.[mt.id];
                       return (
-                        <td key={mt.id} style={{ textAlign: "right", fontFamily: "var(--mono)", fontSize: 13, color: mt.invert ? "var(--ink-2)" : "var(--ink)" }}>
-                          {v == null ? <span style={{ color: "var(--ink-3)" }}>—</span> : v.toFixed(1)}
+                        <td key={mt.id} style={{ textAlign: "right" }}>
+                          {v == null ? <span style={{ color: "var(--ink-3)", fontFamily: "var(--mono)", fontSize: 12 }}>—</span> : (
+                            <span className="scorecell">
+                              <span className="bar"><AnimBar pct={(v / metricMax[mt.id]) * 100} /></span>
+                              <span className="score-num">{v.toFixed(1)}</span>
+                            </span>
+                          )}
                         </td>
                       );
                     })}
-                    <td style={{ textAlign: "right" }}>
-                      {m.score == null ? <span style={{ color: "var(--ink-3)", fontFamily: "var(--mono)", fontSize: 12 }}>—</span> : (
-                        <span className="scorecell">
-                          <span className="bar"><AnimBar pct={(m.score / maxScore) * 100} /></span>
-                          <span className="score-num">{m.score.toFixed(1)}</span>
-                        </span>
-                      )}
-                    </td>
                     <td style={{ textAlign: "center", color: "var(--ink-3)", fontSize: 14, transition: "transform 260ms", transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}>⌄</td>
                   </tr>
                   <tr className="expand-row">
@@ -165,34 +164,32 @@ function HubLeaderboard({ showFilters = true }) {
                         <div className="inner">
                           <div className="pad">
                             <div className="eyebrow" style={{ marginBottom: 14 }}>Per-source pass rate, {m.name}</div>
-                            <div className="taskbars" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
-                              {TLAPS_DATA.tasks.map((t, si) => {
-                                const v = m.perTask?.[t.id];
-                                return (
-                                  <div className="taskbar" key={t.id} style={{ gridTemplateColumns: "150px 1fr auto", alignItems: "center" }}>
-                                    <span className="tname">{t.name}</span>
-                                    {v == null
-                                      ? <span style={{ display: "inline-block", width: "100%", height: 8 }} />
-                                      : (isOpen
+                            {/* Split each source by task type so the two are never blended together. */}
+                            {TLAPS_DATA.metrics.map((mt, mi) => {
+                              const rowsForMode = TLAPS_DATA.tasks
+                                .map(t => ({ t, v: m.perTask?.[t.id]?.[mt.id] }))
+                                .filter(r => r.v != null);
+                              if (!rowsForMode.length) return null;
+                              return (
+                                <div key={mt.id} style={{ marginTop: mi === 0 ? 0 : 22 }}>
+                                  <div className="modehead">{mt.name}</div>
+                                  <div className="taskbars" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+                                    {rowsForMode.map(({ t, v }, si) => (
+                                      <div className="taskbar" key={t.id} style={{ gridTemplateColumns: "150px 1fr auto", alignItems: "center" }}>
+                                        <span className="tname">{t.name}</span>
+                                        {isOpen
                                           ? <AnimBar pct={v.rate} delay={si * 40} height={8} show />
-                                          : <span style={{ display: "inline-block", width: "100%", height: 8 }} />)}
-                                    <span className="val" style={{ minWidth: 92, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 3 }}>
-                                      {v == null ? "—" : (
-                                        <>
-                                          <span><span style={{ fontWeight: 600 }}>{v.rate.toFixed(1)}%</span> <span style={{ color: "var(--ink-3)", fontWeight: 400, fontSize: 11 }}>{v.pass}/{v.total}</span></span>
-                                          {v.cheat > 0 && (
-                                            <span title={`${v.cheat} of ${v.total} flagged by the cheat-checker`}
-                                              style={{ display: "inline-flex", alignItems: "center", gap: 4, padding: "1px 7px", borderRadius: 999, background: "rgba(245,158,11,0.14)", color: "var(--warn)", fontSize: 10, fontWeight: 600 }}>
-                                              ⚑ {v.cheat} cheated
-                                            </span>
-                                          )}
-                                        </>
-                                      )}
-                                    </span>
+                                          : <span style={{ display: "inline-block", width: "100%", height: 8 }} />}
+                                        <span className="val" style={{ minWidth: 92, textAlign: "right" }}>
+                                          <span style={{ fontWeight: 600 }}>{v.rate.toFixed(1)}%</span>{" "}
+                                          <span style={{ color: "var(--ink-3)", fontWeight: 400, fontSize: 11 }}>{v.pass}/{v.total}</span>
+                                        </span>
+                                      </div>
+                                    ))}
                                   </div>
-                                );
-                              })}
-                            </div>
+                                </div>
+                              );
+                            })}
                           </div>
                         </div>
                       </div>

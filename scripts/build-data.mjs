@@ -49,11 +49,13 @@ const models = readdirSync("results").filter((f) => f.endsWith(".json")).map((f)
     if (r.check_verdict === "PASS") s.pass++;
     else if (r.check_verdict === "CHEATING") s.cheat++;
     else s.fail++;
-    s.perMode[r.mode] = (s.perMode[r.mode] ?? 0) + 1;
+    const pm = (s.perMode[r.mode] ??= { pass: 0, total: 0 });
+    pm.total++;
+    if (r.check_verdict === "PASS") pm.pass++;
   }
   for (const [src, [pc, pfs]] of Object.entries(CANONICAL)) {
     const got = bySource[src]?.perMode ?? {};
-    if ((got["proof-completion"] ?? 0) !== pc || (got["proof-from-scratch"] ?? 0) !== pfs)
+    if ((got["proof-completion"]?.total ?? 0) !== pc || (got["proof-from-scratch"]?.total ?? 0) !== pfs)
       throw new Error(`${f}: ${src} counts don't match the canonical manifest`);
   }
   for (const m of MODES) { // cross-check recomputed rates vs the file's own summaries
@@ -63,9 +65,17 @@ const models = readdirSync("results").filter((f) => f.endsWith(".json")).map((f)
   }
 
   // ---- aggregate ----
-  const cheat = MODES.reduce((n, m) => n + (byMode[m].CHEATING ?? 0), 0);
+  // Only PASS counts toward a pass rate; both FAIL and CHEATING are non-passes.
+  // Per source, split the rate by task type so the two are never blended together;
+  // a mode is omitted (null) when the source has no tasks of that type.
+  const modeStat = (pm) => (pm && pm.total > 0)
+    ? { rate: r1((pm.pass / pm.total) * 100), pass: pm.pass, total: pm.total } : null;
   const perTask = Object.fromEntries(Object.entries(bySource).map(([src, s]) =>
-    [slug(src), { rate: r1((s.pass / s.total) * 100), pass: s.pass, fail: s.fail, cheat: s.cheat, total: s.total }]));
+    [slug(src), {
+      rate: r1((s.pass / s.total) * 100), pass: s.pass, fail: s.fail + s.cheat, total: s.total,
+      completion: modeStat(s.perMode["proof-completion"]),
+      scratch: modeStat(s.perMode["proof-from-scratch"]),
+    }]));
 
   const info = BACKEND_INFO[meta.backend] ?? { name: meta.backend, org: "?", logo: null, kind: "base" };
   return {
@@ -75,7 +85,6 @@ const models = readdirSync("results").filter((f) => f.endsWith(".json")).map((f)
     perMetric: {
       completion: r1((byMode["proof-completion"].PASS / byMode["proof-completion"].total) * 100),
       scratch: r1((byMode["proof-from-scratch"].PASS / byMode["proof-from-scratch"].total) * 100),
-      cheating: r1((cheat / RECORDS) * 100),
     },
     perTask,
   };
@@ -86,7 +95,6 @@ const data = {
   metrics: [
     { id: "completion", name: "--mode proof-completion",  blurb: "Pass rate on the 483 proof-completion tasks." },
     { id: "scratch",    name: "--mode proof-from-scratch", blurb: "Pass rate on the 231 proof-from-scratch tasks." },
-    { id: "cheating",   name: "Cheating", invert: true, blurb: "Share of all 714 tasks the checker flagged as gamed. Lower is better." },
   ],
   // Leaderboard per-source expand: slug ids match perTask keys; n = tasks across both modes.
   tasks: Object.entries(CANONICAL).map(([name, [pc, pfs]]) => ({ id: slug(name), name, n: pc + pfs })),
