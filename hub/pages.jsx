@@ -196,39 +196,32 @@ function PageBenchmark() {
                 const naTitle = "Not applicable — this source has no proof-completion tasks.";
                 return (
                   <div key={s.id} data-id={s.id}
-                       className={"task-card" + (isOpen ? " open" : "") + (inRow ? " row-open" : "") + (s.examples ? " has-examples" : "")}
+                       className={"task-card" + (isOpen ? " open" : "") + (inRow ? " row-open" : "")}
                        onClick={() => setOpen(isOpen ? null : s.id)}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
                       <h3 style={{ fontSize: 16, margin: 0 }}>{s.name}</h3>
                       <span className="pill">{s.total}</span>
                     </div>
                     <div style={{ fontFamily: "var(--mono)", fontSize: 11.5, color: "var(--ink-3)", marginTop: 6, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                      {naC ? <span title={naTitle}>— completion</span> : `${s.completion} completion`} · {s.scratch} from scratch
+                      {/* Only name the task types this dataset actually has, so scratch-only
+                          datasets don't all foreground a hollow "— completion". */}
+                      {[
+                        s.completion > 0 ? `${s.completion} completion` : null,
+                        s.scratch > 0 ? `${s.scratch} from scratch` : null,
+                      ].filter(Boolean).join(" · ")}
                     </div>
                     <div className="kv-wrap"><div className="kv-inner">
                       <div className="kv">
                         <span>Completion</span><b title={naC ? naTitle : undefined}>{naC ? "—" : s.completion}</b>
                         <span>From scratch</span><b>{s.scratch}</b>
                         <span>Total</span><b style={{ color: "var(--accent)" }}>{s.total}</b>
-                        {s.github && (
-                          <a className="gh" href={s.github} target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                            <span style={{fontSize:13}}>↗</span> View source on GitHub
+                        {s.source && (
+                          <a className="gh" href={s.source} target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
+                            <span style={{fontSize:13}}>↗</span> View source repository
                           </a>
                         )}
                       </div>
                       {s.desc && <p className="src-desc">{s.desc}</p>}
-                      {s.examples && (
-                        <div className="spec-block">
-                          <div className="spec-head">{s.examples.length} specifications</div>
-                          <div className="spec-list">
-                            {s.examples.map((e) => (
-                              <span className="spec-chip" key={e.name}>
-                                {e.name.replace(/_/g, " / ")}<span className="spec-n">{e.n}</span>
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
                     </div></div>
                   </div>
                 );
@@ -296,23 +289,6 @@ function PageCite() {
           <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
             <a className="btn primary" href="https://github.com/specula-org/tlaps-bench" target="_blank">Open a PR</a>
             <a className="btn ghost" href="https://github.com/specula-org/tlaps-bench/blob/main/docs/USAGE.md" target="_blank">Usage guide</a>
-          </div>
-        </FadeIn>
-
-        <FadeIn delay={160}>
-          <hr className="sep" />
-          <h2 style={{ fontSize: 28 }}>Cite</h2>
-          <p style={{ fontFamily: "var(--serif)", fontSize: 17, lineHeight: 1.7, color: "var(--ink-2)" }}>
-            If TLAPS-Bench is useful in your research, please cite it.
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={280}>
-          <div className="card bibbox" style={{ padding: 0, marginTop: 28, overflow: "hidden" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 12px 8px 14px", borderBottom: "1px solid var(--line-soft)", background: "var(--paper-2)", fontFamily: "var(--mono)", fontSize: 11, color: "var(--ink-3)", textTransform: "uppercase", letterSpacing: "0.1em", minHeight: 36 }}>
-              <span>bibtex</span><CopyBibBtn />
-            </div>
-            <pre className="code" style={{ borderRadius: 0, border: "none" }}>{TLAPS_DATA.bibtex}</pre>
           </div>
         </FadeIn>
       </div>

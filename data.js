@@ -2042,190 +2042,8 @@ window.TLAPS_DATA = {
       "completion": 379,
       "scratch": 126,
       "total": 505,
-      "github": "https://github.com/tlaplus/Examples",
-      "desc": "The official community TLA+ examples repository — a broad collection of specifications, from teaching exercises to real distributed protocols. Its 505 proof tasks span dozens of individual specs.",
-      "examples": [
-        {
-          "name": "ewd998",
-          "n": 59
-        },
-        {
-          "name": "byzpaxos",
-          "n": 52
-        },
-        {
-          "name": "lamport_mutex",
-          "n": 22
-        },
-        {
-          "name": "TencentPaxos",
-          "n": 21
-        },
-        {
-          "name": "LoopInvariance",
-          "n": 20
-        },
-        {
-          "name": "allocator",
-          "n": 19
-        },
-        {
-          "name": "ewd687a",
-          "n": 19
-        },
-        {
-          "name": "ewd840",
-          "n": 19
-        },
-        {
-          "name": "tcp",
-          "n": 19
-        },
-        {
-          "name": "bcastByz",
-          "n": 18
-        },
-        {
-          "name": "FiniteMonotonic",
-          "n": 17
-        },
-        {
-          "name": "barriers",
-          "n": 16
-        },
-        {
-          "name": "TeachingConcurrency",
-          "n": 16
-        },
-        {
-          "name": "transaction_commit",
-          "n": 16
-        },
-        {
-          "name": "PaxosHowToWinATuringAward",
-          "n": 15
-        },
-        {
-          "name": "locks_auxiliary_vars",
-          "n": 14
-        },
-        {
-          "name": "BlockingQueue",
-          "n": 13
-        },
-        {
-          "name": "LearnProofs",
-          "n": 11
-        },
-        {
-          "name": "MultiCarElevator",
-          "n": 11
-        },
-        {
-          "name": "CigaretteSmokers",
-          "n": 10
-        },
-        {
-          "name": "MisraReachability",
-          "n": 10
-        },
-        {
-          "name": "glowingRaccoon",
-          "n": 9
-        },
-        {
-          "name": "Majority",
-          "n": 9
-        },
-        {
-          "name": "Paxos",
-          "n": 7
-        },
-        {
-          "name": "Bakery-Boulangerie",
-          "n": 6
-        },
-        {
-          "name": "ReadersWriters",
-          "n": 5
-        },
-        {
-          "name": "SpecifyingSystems_Composing",
-          "n": 5
-        },
-        {
-          "name": "Termination",
-          "n": 5
-        },
-        {
-          "name": "SpecifyingSystems_AsynchronousInterface",
-          "n": 4
-        },
-        {
-          "name": "DieHard",
-          "n": 3
-        },
-        {
-          "name": "spanning",
-          "n": 3
-        },
-        {
-          "name": "SpecifyingSystems_CachingMemory",
-          "n": 3
-        },
-        {
-          "name": "SpecifyingSystems_FIFO",
-          "n": 3
-        },
-        {
-          "name": "SpecifyingSystems_Liveness",
-          "n": 3
-        },
-        {
-          "name": "SpecifyingSystems_RealTime",
-          "n": 3
-        },
-        {
-          "name": "sums_even",
-          "n": 3
-        },
-        {
-          "name": "TwoPhase",
-          "n": 3
-        },
-        {
-          "name": "byihive",
-          "n": 2
-        },
-        {
-          "name": "CoffeeCan",
-          "n": 2
-        },
-        {
-          "name": "KeyValueStore",
-          "n": 2
-        },
-        {
-          "name": "MissionariesAndCannibals",
-          "n": 2
-        },
-        {
-          "name": "SpanningTree",
-          "n": 2
-        },
-        {
-          "name": "SpecifyingSystems_TLC",
-          "n": 2
-        },
-        {
-          "name": "GermanProtocol",
-          "n": 1
-        },
-        {
-          "name": "SpecifyingSystems_HourClock",
-          "n": 1
-        }
-      ]
+      "source": "https://github.com/tlaplus/Examples",
+      "desc": "The official community TLA+ examples repository — a broad collection of specifications, from teaching exercises to real distributed protocols. Its 505 proof tasks span dozens of individual specs."
     },
     {
       "id": "tlaps-dist",
@@ -2233,7 +2051,7 @@ window.TLAPS_DATA = {
       "completion": 103,
       "scratch": 57,
       "total": 160,
-      "github": "https://github.com/tlaplus/tlapm"
+      "source": "https://github.com/tlaplus/tlapm"
     },
     {
       "id": "zookeeper-zab",
@@ -2241,7 +2059,7 @@ window.TLAPS_DATA = {
       "completion": 0,
       "scratch": 18,
       "total": 18,
-      "github": null
+      "source": "https://github.com/apache/zookeeper"
     },
     {
       "id": "ivy-liveness",
@@ -2249,7 +2067,7 @@ window.TLAPS_DATA = {
       "completion": 0,
       "scratch": 12,
       "total": 12,
-      "github": null
+      "source": "https://github.com/kenmcmil/ivy"
     },
     {
       "id": "etcd",
@@ -2257,7 +2075,7 @@ window.TLAPS_DATA = {
       "completion": 0,
       "scratch": 8,
       "total": 8,
-      "github": null
+      "source": "https://github.com/specula-org"
     },
     {
       "id": "abstract-raft",
@@ -2265,7 +2083,7 @@ window.TLAPS_DATA = {
       "completion": 0,
       "scratch": 4,
       "total": 4,
-      "github": null
+      "source": null
     },
     {
       "id": "open-addressing",
@@ -2273,7 +2091,7 @@ window.TLAPS_DATA = {
       "completion": 1,
       "scratch": 5,
       "total": 6,
-      "github": null
+      "source": "https://github.com/lemmy/Examples"
     },
     {
       "id": "anvil",
@@ -2281,7 +2099,7 @@ window.TLAPS_DATA = {
       "completion": 0,
       "scratch": 1,
       "total": 1,
-      "github": null
+      "source": null
     }
   ],
   "coverage": [],

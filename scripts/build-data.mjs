@@ -135,25 +135,6 @@ const models = readdirSync("results").filter((f) => f.endsWith(".json")).map((f)
   };
 });
 
-// Constituent specs behind the large tlaplus/Examples bucket, derived from the
-// task set so the list stays in sync with results (identical across backends).
-const anyFile = readdirSync("results").find((f) => f.endsWith(".json"));
-const exGroups = new Map();
-for (const r of JSON.parse(readFileSync(`results/${anyFile}`, "utf8")).results) {
-  if (r.source !== "tlaplus/Examples") continue;
-  const g = r.benchmark.split("/")[0].replace(/^tlaplus_examples_/, "");
-  exGroups.set(g, (exGroups.get(g) ?? 0) + 1);
-}
-const tlaplusExamples = [...exGroups.entries()]
-  .map(([name, n]) => ({ name, n }))
-  .sort((a, b) => b.n - a.n || a.name.localeCompare(b.name));
-const exTotal = tlaplusExamples.reduce((a, e) => a + e.n, 0);
-if (exTotal !== 505) throw new Error(`tlaplus/Examples specs sum to ${exTotal} != 505`);
-
-// Attach the derived spec list to the tlaplus/Examples source card.
-const sources = SITE.sources.map((s) =>
-  s.id === "tlaplus-examples" ? { ...s, examples: tlaplusExamples } : s);
-
 const data = {
   paper: SITE.paper,
   metrics: [
@@ -165,9 +146,9 @@ const data = {
   // Leaderboard per-source expand: slug ids match perTask keys; n = tasks across both modes.
   tasks: Object.entries(CANONICAL).map(([name, [pc, pfs]]) => ({ id: slug(name), name: DISPLAY_NAME[name] ?? name, n: pc + pfs })),
   models: models.sort((a, b) => b.score - a.score),
-  // Preserved page content (Benchmark task-type cards + source cards, Cite).
+  // Preserved page content (Benchmark task-type cards + source cards).
   modes: SITE.modes,
-  sources,
+  sources: SITE.sources,
   coverage: SITE.coverage,
   bibtex: SITE.bibtex,
 };
