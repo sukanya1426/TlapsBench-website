@@ -45,7 +45,10 @@ function HubLeaderboard({ showFilters = true }) {
 
   const [sort, setSort] = useS_lb({ key: "metric:completion", dir: "desc" });
   const [expanded, setExpanded] = useS_lb(null);
-  const [specsShown, setSpecsShown] = useS_lb(false);
+  // Which datasets have their per-spec breakdown open (by task id). A Set so that
+  // multiple expandable datasets can be toggled independently.
+  const [openSpecs, setOpenSpecs] = useS_lb(() => new Set());
+  const toggleSpecs = (id) => setOpenSpecs(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
   const [orgFilter, setOrgFilter] = useS_lb("All");
   const [kindFilter, setKindFilter] = useS_lb("All");
 
@@ -70,7 +73,7 @@ function HubLeaderboard({ showFilters = true }) {
 
   const onSort = (key) => {
     setExpanded(null);
-    setSpecsShown(false);
+    setOpenSpecs(new Set());
     setSort(s => {
       if (s.key === key) return { key, dir: s.dir === "desc" ? "asc" : "desc" };
       // any lower-is-better column starts ascending; everything else descending.
@@ -160,7 +163,7 @@ function HubLeaderboard({ showFilters = true }) {
                 <React.Fragment key={m.id}>
                   <tr ref={el => { if (el) rowRefs.current[m.id] = el; else delete rowRefs.current[m.id]; }}
                       className={isOpen ? "expanded" : ""}
-                      onClick={() => { setSpecsShown(false); setExpanded(isOpen ? null : m.id); }}>
+                      onClick={() => { setOpenSpecs(new Set()); setExpanded(isOpen ? null : m.id); }}>
                     <td className="rank"><span className="rank-slot">{
                       m.score == null ? "—" : i < 3
                         ? <span className={"rank-medal " + ["gold","silver","bronze"][i]}>{i + 1}</span>
@@ -213,14 +216,15 @@ function HubLeaderboard({ showFilters = true }) {
                                     const pt = m.perTask?.[t.id];
                                     if (!pt) return null;
                                     const specs = pt.specs && pt.specs.length ? pt.specs : null;
+                                    const specsOpen = specs && openSpecs.has(t.id);
                                     return (
                                       <React.Fragment key={t.id}>
                                         <tr className={"bd-row" + (specs ? " bd-group" : "")}>
                                           <td className="bd-name">
                                             {specs ? (
-                                              <button className="bd-toggle" onClick={(e) => { e.stopPropagation(); setSpecsShown(v => !v); }}
-                                                      aria-expanded={specsShown}>
-                                                <span className="bd-caret" style={{ transform: specsShown ? "rotate(90deg)" : "none" }}>▸</span>
+                                              <button className="bd-toggle" onClick={(e) => { e.stopPropagation(); toggleSpecs(t.id); }}
+                                                      aria-expanded={specsOpen}>
+                                                <span className="bd-caret" style={{ transform: specsOpen ? "rotate(90deg)" : "none" }}>▸</span>
                                                 <span>{t.name}</span>
                                                 <span className="bd-note">{specs.length} specs</span>
                                               </button>
@@ -229,7 +233,7 @@ function HubLeaderboard({ showFilters = true }) {
                                           <BreakdownCell v={pt.completion} isOpen={isOpen} />
                                           <BreakdownCell v={pt.scratch} isOpen={isOpen} />
                                         </tr>
-                                        {specs && specsShown && specs.map(sp => (
+                                        {specsOpen && specs.map(sp => (
                                           <tr className="bd-row bd-spec" key={sp.id}>
                                             <td className="bd-name bd-spec-name">{sp.name.replace(/_/g, " / ")}</td>
                                             <BreakdownCell v={sp.completion} isOpen={isOpen} />

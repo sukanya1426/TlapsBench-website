@@ -37,6 +37,14 @@ const DISPLAY_NAME = {
   "OpenAddressing (lemmy/Examples)": "OpenAddressing",
 };
 
+// Datasets whose tasks span many named specs: the leaderboard expands these into a
+// per-spec breakdown. `strip` cleans the leading path token into a display name;
+// `total` guards that every task is accounted for.
+const EXPANDABLE = {
+  "tlaplus/Examples": { strip: /^tlaplus_examples_/, total: 505 },
+  "TLAPS distribution examples": { strip: null, total: 160 },
+};
+
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const r1 = (x) => Math.round(x * 10) / 10;
 
@@ -60,11 +68,14 @@ const models = readdirSync("results").filter((f) => f.endsWith(".json")).map((f)
     const pm = (s.perMode[r.mode] ??= { pass: 0, total: 0 });
     pm.total++;
     if (r.check_verdict === "PASS") pm.pass++;
-    // Break the large tlaplus/Examples bucket down by individual spec, so the
-    // leaderboard can expand it into a per-spec breakdown of the same shape.
-    if (r.source === "tlaplus/Examples") {
-      const spec = r.benchmark.split("/")[0].replace(/^tlaplus_examples_/, "");
-      const sp = (bySpec[spec] ??= { perMode: {} });
+    // Break expandable datasets down by individual spec, so the leaderboard can
+    // expand them into a per-spec breakdown of the same shape.
+    const exp = EXPANDABLE[r.source];
+    if (exp) {
+      const seg = r.benchmark.split("/")[0];
+      const spec = exp.strip ? seg.replace(exp.strip, "") : seg;
+      const bag = (bySpec[r.source] ??= {});
+      const sp = (bag[spec] ??= { perMode: {} });
       const spm = (sp.perMode[r.mode] ??= { pass: 0, total: 0 });
       spm.total++;
       if (r.check_verdict === "PASS") spm.pass++;
@@ -94,18 +105,22 @@ const models = readdirSync("results").filter((f) => f.endsWith(".json")).map((f)
       scratch: modeStat(s.perMode["proof-from-scratch"]),
     }]));
 
-  // Attach the per-spec breakdown to the tlaplus/Examples task, ordered by size.
+  // Attach each expandable dataset's per-spec breakdown to its task, ordered by size.
   const specSize = (sp) => (sp.perMode["proof-completion"]?.total ?? 0) + (sp.perMode["proof-from-scratch"]?.total ?? 0);
-  const specs = Object.entries(bySpec)
-    .map(([name, sp]) => ({
-      id: slug(name), name, total: specSize(sp),
-      completion: modeStat(sp.perMode["proof-completion"]),
-      scratch: modeStat(sp.perMode["proof-from-scratch"]),
-    }))
-    .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));
-  const specTotal = specs.reduce((n, sp) => n + sp.total, 0);
-  if (specTotal !== 505) throw new Error(`${f}: tlaplus/Examples specs sum to ${specTotal} != 505`);
-  if (perTask["tlaplus-examples"]) perTask["tlaplus-examples"].specs = specs;
+  for (const [src, exp] of Object.entries(EXPANDABLE)) {
+    const bag = bySpec[src];
+    if (!bag) throw new Error(`${f}: expandable source "${src}" has no records`);
+    const specs = Object.entries(bag)
+      .map(([name, sp]) => ({
+        id: slug(name), name, total: specSize(sp),
+        completion: modeStat(sp.perMode["proof-completion"]),
+        scratch: modeStat(sp.perMode["proof-from-scratch"]),
+      }))
+      .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));
+    const specTotal = specs.reduce((n, sp) => n + sp.total, 0);
+    if (specTotal !== exp.total) throw new Error(`${f}: ${src} specs sum to ${specTotal} != ${exp.total}`);
+    perTask[slug(src)].specs = specs;
+  }
 
   const info = BACKEND_INFO[meta.backend] ?? { name: meta.backend, org: "?", logo: null, kind: "base" };
   return {

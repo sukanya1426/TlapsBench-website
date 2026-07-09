@@ -92,7 +92,203 @@ window.TLAPS_DATA = {
             "rate": 100,
             "pass": 57,
             "total": 57
-          }
+          },
+          "specs": [
+            {
+              "id": "consensus",
+              "name": "Consensus",
+              "total": 35,
+              "completion": {
+                "rate": 88,
+                "pass": 22,
+                "total": 25
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 10,
+                "total": 10
+              }
+            },
+            {
+              "id": "data",
+              "name": "Data",
+              "total": 24,
+              "completion": {
+                "rate": 80,
+                "pass": 12,
+                "total": 15
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 9,
+                "total": 9
+              }
+            },
+            {
+              "id": "cantor",
+              "name": "Cantor",
+              "total": 21,
+              "completion": {
+                "rate": 100,
+                "pass": 11,
+                "total": 11
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 10,
+                "total": 10
+              }
+            },
+            {
+              "id": "paxos",
+              "name": "Paxos",
+              "total": 19,
+              "completion": {
+                "rate": 100,
+                "pass": 13,
+                "total": 13
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 6,
+                "total": 6
+              }
+            },
+            {
+              "id": "allocator",
+              "name": "Allocator",
+              "total": 14,
+              "completion": {
+                "rate": 100,
+                "pass": 10,
+                "total": 10
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 4,
+                "total": 4
+              }
+            },
+            {
+              "id": "bubblesort",
+              "name": "BubbleSort",
+              "total": 11,
+              "completion": {
+                "rate": 100,
+                "pass": 8,
+                "total": 8
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 3,
+                "total": 3
+              }
+            },
+            {
+              "id": "euclid",
+              "name": "Euclid",
+              "total": 11,
+              "completion": {
+                "rate": 100,
+                "pass": 6,
+                "total": 6
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 5,
+                "total": 5
+              }
+            },
+            {
+              "id": "atomicbakery",
+              "name": "AtomicBakery",
+              "total": 10,
+              "completion": {
+                "rate": 100,
+                "pass": 8,
+                "total": 8
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 2,
+                "total": 2
+              }
+            },
+            {
+              "id": "simplemutex",
+              "name": "SimpleMutex",
+              "total": 7,
+              "completion": {
+                "rate": 100,
+                "pass": 5,
+                "total": 5
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 2,
+                "total": 2
+              }
+            },
+            {
+              "id": "ewd840",
+              "name": "EWD840",
+              "total": 3,
+              "completion": {
+                "rate": 100,
+                "pass": 2,
+                "total": 2
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            },
+            {
+              "id": "peterson",
+              "name": "Peterson",
+              "total": 2,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 2,
+                "total": 2
+              }
+            },
+            {
+              "id": "bakery",
+              "name": "Bakery",
+              "total": 1,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            },
+            {
+              "id": "record",
+              "name": "Record",
+              "total": 1,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            },
+            {
+              "id": "sumandmax",
+              "name": "SumAndMax",
+              "total": 1,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            }
+          ]
         },
         "openaddressing-lemmy-examples": {
           "rate": 33.3,
@@ -873,7 +1069,203 @@ window.TLAPS_DATA = {
             "rate": 78.9,
             "pass": 45,
             "total": 57
-          }
+          },
+          "specs": [
+            {
+              "id": "consensus",
+              "name": "Consensus",
+              "total": 35,
+              "completion": {
+                "rate": 72,
+                "pass": 18,
+                "total": 25
+              },
+              "scratch": {
+                "rate": 60,
+                "pass": 6,
+                "total": 10
+              }
+            },
+            {
+              "id": "data",
+              "name": "Data",
+              "total": 24,
+              "completion": {
+                "rate": 80,
+                "pass": 12,
+                "total": 15
+              },
+              "scratch": {
+                "rate": 88.9,
+                "pass": 8,
+                "total": 9
+              }
+            },
+            {
+              "id": "cantor",
+              "name": "Cantor",
+              "total": 21,
+              "completion": {
+                "rate": 100,
+                "pass": 11,
+                "total": 11
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 10,
+                "total": 10
+              }
+            },
+            {
+              "id": "paxos",
+              "name": "Paxos",
+              "total": 19,
+              "completion": {
+                "rate": 53.8,
+                "pass": 7,
+                "total": 13
+              },
+              "scratch": {
+                "rate": 33.3,
+                "pass": 2,
+                "total": 6
+              }
+            },
+            {
+              "id": "allocator",
+              "name": "Allocator",
+              "total": 14,
+              "completion": {
+                "rate": 100,
+                "pass": 10,
+                "total": 10
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 4,
+                "total": 4
+              }
+            },
+            {
+              "id": "bubblesort",
+              "name": "BubbleSort",
+              "total": 11,
+              "completion": {
+                "rate": 100,
+                "pass": 8,
+                "total": 8
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 3,
+                "total": 3
+              }
+            },
+            {
+              "id": "euclid",
+              "name": "Euclid",
+              "total": 11,
+              "completion": {
+                "rate": 83.3,
+                "pass": 5,
+                "total": 6
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 5,
+                "total": 5
+              }
+            },
+            {
+              "id": "atomicbakery",
+              "name": "AtomicBakery",
+              "total": 10,
+              "completion": {
+                "rate": 0,
+                "pass": 0,
+                "total": 8
+              },
+              "scratch": {
+                "rate": 50,
+                "pass": 1,
+                "total": 2
+              }
+            },
+            {
+              "id": "simplemutex",
+              "name": "SimpleMutex",
+              "total": 7,
+              "completion": {
+                "rate": 60,
+                "pass": 3,
+                "total": 5
+              },
+              "scratch": {
+                "rate": 100,
+                "pass": 2,
+                "total": 2
+              }
+            },
+            {
+              "id": "ewd840",
+              "name": "EWD840",
+              "total": 3,
+              "completion": {
+                "rate": 100,
+                "pass": 2,
+                "total": 2
+              },
+              "scratch": {
+                "rate": 0,
+                "pass": 0,
+                "total": 1
+              }
+            },
+            {
+              "id": "peterson",
+              "name": "Peterson",
+              "total": 2,
+              "completion": null,
+              "scratch": {
+                "rate": 50,
+                "pass": 1,
+                "total": 2
+              }
+            },
+            {
+              "id": "bakery",
+              "name": "Bakery",
+              "total": 1,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            },
+            {
+              "id": "record",
+              "name": "Record",
+              "total": 1,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            },
+            {
+              "id": "sumandmax",
+              "name": "SumAndMax",
+              "total": 1,
+              "completion": null,
+              "scratch": {
+                "rate": 100,
+                "pass": 1,
+                "total": 1
+              }
+            }
+          ]
         },
         "openaddressing-lemmy-examples": {
           "rate": 16.7,
