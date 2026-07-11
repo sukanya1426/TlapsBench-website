@@ -85,8 +85,8 @@ function PageHome({ go }) {
               {TLAPS_DATA.paper.overview}
             </p>
             <p style={{ fontFamily: "var(--serif)", fontSize: 18, lineHeight: 1.75, color: "var(--ink-2)", marginTop: 14, textWrap: "pretty" }}>
-              Every accepted proof is also screened by a cheat-checker, so a "pass" means a
-              genuine proof, not a weakened theorem or an admitted step.
+              Every proof is first screened by a cheat-checker before tlapm runs, so a "pass"
+              means a genuine proof, not a weakened theorem or an admitted step.
             </p>
           </Reveal>
         </div>
@@ -127,9 +127,9 @@ function PageLeaderboard() {
           <span className="eyebrow accent">Results</span>
           <h1 style={{ fontSize: 44, marginTop: 10 }}>Leaderboard</h1>
           <p className="lead" style={{ maxWidth: 820 }}>
-            Pass rate is the share of scored properties that pass, where the proof must be accepted
-            by tlapm and clear the cheat-checker (no admitted steps, smuggled axioms, or
-            weakened theorems). The two benchmark modes, proof-completion and proof-from-scratch, are
+            Pass rate is the share of scored properties that pass, where the proof must first clear
+            the cheat-checker (no admitted steps, smuggled axioms, or weakened theorems) and then be
+            accepted by tlapm. The two benchmark modes, proof-completion and proof-from-scratch, are
             scored separately rather than blended into a single number. Expand a model to see the
             same 71 specs used in the benchmark index in one continuous table, with per-spec
             property pass counts for each mode. Filter by organization, or switch between one-shot
@@ -283,10 +283,12 @@ function PageBenchmark() {
           <Reveal>
             <h2 style={{ fontSize: 32 }}>How a proof is graded</h2>
             <p className="lead" style={{ fontSize: 17 }}>
-              Each candidate proof is graded inside a Docker sandbox in two passes: tlapm checks
-              that the proof is correct, and a cheat-checker confirms it's legitimate, with no
-              admitted steps, smuggled axioms, or weakened theorems. A proof that "passes" by
-              cheating is scored as a failure, not a pass.
+              Each candidate proof is graded inside a Docker sandbox as one merged check. The
+              cheat-checker runs first and fails fast: it screens for legitimacy — no admitted
+              steps, smuggled axioms, or weakened theorems — with no proving required. If a cheat
+              is caught, the verdict is CHEATING and tlapm is never run. Only a clean proof reaches
+              tlapm, which checks that the proof is correct. A proof that "passes" by cheating is
+              scored as a failure, not a pass.
             </p>
           </Reveal>
           <Reveal delay={120}><div style={{ marginTop: 24 }}><PipelineBanner /></div></Reveal>

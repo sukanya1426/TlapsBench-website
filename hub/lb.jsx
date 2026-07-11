@@ -152,6 +152,15 @@ function HubLeaderboard({ showFilters = true }) {
             </tr>
           </thead>
           <tbody>
+            {rows.length === 0 && (
+              <tr className="lb-empty-row">
+                <td colSpan={colCount}>
+                  <div className="lb-empty">
+                    No models scored in this mode yet — one-shot results are coming soon.
+                  </div>
+                </td>
+              </tr>
+            )}
             {rows.map((m, i) => {
               const isOpen = expanded === m.id;
               const hasRankValue = getVal(m, sort.key) != null;

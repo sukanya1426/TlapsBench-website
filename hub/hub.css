@@ -113,7 +113,12 @@ p.lead { font-family: var(--serif); font-size: 20px; line-height: 1.6; color: va
 .highlight-card:hover .arrow .ar { transform: translateX(4px); }
 
 /* leaderboard */
-.lb-wrap { border: 1px solid var(--line-soft); border-radius: 12px; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; background: var(--paper); }
+/* overflow is visible on desktop so column tooltips can extend past a short table
+   (few/one filtered row) without being clipped; horizontal scroll is only needed
+   on narrow viewports, where it's re-enabled in the max-width:900px block below. */
+.lb-wrap { border: 1px solid var(--line-soft); border-radius: 12px; overflow: visible; -webkit-overflow-scrolling: touch; background: var(--paper); }
+table.lb thead th:first-child { border-top-left-radius: 12px; }
+table.lb thead th:last-child { border-top-right-radius: 12px; }
 table.lb { width: 100%; border-collapse: collapse; font-size: 14px; }
 table.lb th, table.lb td { text-align: left; padding: 14px 20px; border-bottom: 1px solid var(--line-soft); }
 table.lb thead th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); font-weight: 500; background: var(--paper-2); cursor: pointer; user-select: none; border-bottom: 1px solid var(--line-soft); }
@@ -145,6 +150,10 @@ table.lb th.lb-gap, table.lb td.lb-gap { padding-left: 64px; }
   border: 6px solid transparent; border-bottom-color: var(--paper);
 }
 .th-mode:hover .col-tip, .th-mode:focus-within .col-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+table.lb tr.lb-empty-row { cursor: default; }
+table.lb tr.lb-empty-row:hover { background: transparent; }
+table.lb tr.lb-empty-row td { border-bottom: none; }
+.lb-empty { padding: 48px 20px; text-align: center; color: var(--ink-3); font-family: var(--sans); font-size: 14px; }
 table.lb tbody tr { cursor: pointer; transition: background 180ms; }
 table.lb tbody > tr { animation: lbRowEnter 360ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 @keyframes lbRowEnter { from { opacity: 0; } to { opacity: 1; } }
@@ -317,6 +326,7 @@ hr.sep { border: none; border-top: 1px solid var(--line-soft); margin: 40px 0; }
   .nav.open .nav-links { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .nav-link { padding: 10px 12px; font-size: 15px; }
   .nav-links .nav-cta { margin-left: 0; justify-content: center; }
+  .lb-wrap { overflow-x: auto; overflow-y: hidden; }
   table.lb { min-width: 640px; }
   table.lb th, table.lb td { padding: 12px 14px; }
   .scorecell .bar { width: 56px; }

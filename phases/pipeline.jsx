@@ -30,16 +30,16 @@ const P_WARN = 'var(--warn)';
 
 function APipeline() {
   const verdicts = [
-    { color: P.ok,   bg: 'rgba(16,185,129,0.08)', label: '✅ PASS',     note: 'tlapm accepts + no cheating' },
-    { color: P.err,  bg: 'rgba(239,68,68,0.06)',  label: '❌ FAIL',     note: 'tlapm rejects' },
-    { color: P_WARN, bg: 'rgba(245,158,11,0.08)', label: '🚨 CHEATING', note: 'accepted, but a trick was caught' },
+    { color: P.ok,   bg: 'rgba(16,185,129,0.08)', label: '✅ PASS',     note: 'no cheating + tlapm accepts' },
+    { color: P.err,  bg: 'rgba(239,68,68,0.06)',  label: '❌ FAIL',     note: 'tlapm rejects (honest but incomplete)' },
+    { color: P_WARN, bg: 'rgba(245,158,11,0.08)', label: '🚨 CHEATING', note: 'cheat caught before tlapm ran (tlapm skipped)' },
   ];
   return (
     <div className="banner">
       <div style={{
         padding: '18px 20px',
         display: 'grid',
-        gridTemplateColumns: '212px 72px 234px 58px 100px 92px 1fr',
+        gridTemplateColumns: '212px 72px 234px 92px 100px 58px 1fr',
         gridTemplateRows: '1fr',
         alignItems: 'center',
         height: '100%',
@@ -69,7 +69,7 @@ PROOF OBVIOUS`}
         </div>
 
         <div style={{ gridColumn: '4', display: 'flex', justifyContent: 'center' }}>
-          <PArrow label="tlapm" sub="correct?" w={58} />
+          <PArrow label="cheat-checker" sub="legitimate?" w={92} />
         </div>
 
         <div style={{ gridColumn: '5', display: 'flex', justifyContent: 'center' }}>
@@ -78,14 +78,14 @@ PROOF OBVIOUS`}
             border: `1px solid ${P.line}`, borderRadius: 6, background: '#fbfcfe',
             padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 3,
           }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, textTransform: 'uppercase', letterSpacing: 0.5 }}>tlapm result</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: PFS.body, color: P.ok, fontWeight: 700 }}>✓ accepted</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, lineHeight: 1.3 }}>obligations proved, not yet a pass</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, textTransform: 'uppercase', letterSpacing: 0.5 }}>cheat-check</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: PFS.body, color: P.ok, fontWeight: 700 }}>✓ clean</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9.5, color: P.ink3, lineHeight: 1.3 }}>no tamper — tlapm runs next</span>
           </div>
         </div>
 
         <div style={{ gridColumn: '6', display: 'flex', justifyContent: 'center' }}>
-          <PArrow label="cheat-checker" sub="legitimate?" w={92} />
+          <PArrow label="tlapm" sub="correct?" w={58} />
         </div>
 
         <div style={{ gridColumn: '7', display: 'flex', flexDirection: 'column', gap: 8, paddingLeft: 12 }}>
