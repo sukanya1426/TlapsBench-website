@@ -2,7 +2,7 @@
   "meta": {
     "backend": "codex",
     "generated": "2026-07-07",
-    "note": "Consolidated codex (gpt-5.5) results for both benchmark modes, organized to match the README 'Benchmark problems' table (8 sources, 483 proof-completion + 231 proof-from-scratch = 714 canonical tasks). Transient-infra (0-token/quota-blocked/wall-clock-timeout) failures were re-run and re-graded so every verdict reflects a genuine attempt; heavy ZooKeeper/etcd/ivy proof-from-scratch tasks completed on a pro-tier account. Genuine-FAIL/CHEATING attempts (adopted from prior codex runs where applicable) preserved over spurious re-run rows. Non-canonical duplicates excluded; 0 tasks missing, 0 residual infra/ERROR/TIMEOUT.",
+    "note": "Consolidated codex (gpt-5.5) results for both benchmark modes, organized to match the README 'Benchmark problems' table (7 sources, 483 proof-completion + 227 proof-from-scratch = 710 canonical tasks). Transient-infra (0-token/quota-blocked/wall-clock-timeout) failures were re-run and re-graded so every verdict reflects a genuine attempt; heavy ZooKeeper/etcd/ivy proof-from-scratch tasks completed on a pro-tier account. Genuine-FAIL/CHEATING attempts (adopted from prior codex runs where applicable) preserved over spurious re-run rows. Non-canonical duplicates excluded; 0 tasks missing, 0 residual infra/ERROR/TIMEOUT.",
     "summary_by_mode": {
       "proof-completion": {
         "total": 483,
@@ -14,13 +14,13 @@
         "pass_rate": 91.3
       },
       "proof-from-scratch": {
-        "total": 231,
-        "PASS": 185,
-        "FAIL": 44,
+        "total": 227,
+        "PASS": 182,
+        "FAIL": 43,
         "CHEATING": 2,
         "ERROR": 0,
         "TIMEOUT": 0,
-        "pass_rate": 80.1
+        "pass_rate": 80.2
       }
     },
     "summary_by_source": {
@@ -104,22 +104,6 @@
           "pass_rate": 0.0
         }
       },
-      "AbstractRaft": {
-        "proof-completion": {
-          "total": 0,
-          "PASS": 0,
-          "FAIL": 0,
-          "CHEATING": 0,
-          "pass_rate": 0
-        },
-        "proof-from-scratch": {
-          "total": 4,
-          "PASS": 3,
-          "FAIL": 1,
-          "CHEATING": 0,
-          "pass_rate": 75.0
-        }
-      },
       "OpenAddressing (lemmy/Examples)": {
         "proof-completion": {
           "total": 1,
@@ -153,7 +137,7 @@
         }
       }
     },
-    "record_count": 714
+    "record_count": 710
   },
   "results": [
     {
@@ -7883,70 +7867,6 @@
       "sany_valid": true,
       "obligations": 10,
       "source": "tlaplus/Examples"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_LeaderComplete2.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_LeaderComplete2",
-      "backend": "codex",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "FAIL",
-      "time_secs": 3442.499086856842,
-      "error": "",
-      "input_tokens": 21496545,
-      "output_tokens": 87442,
-      "sany_valid": true,
-      "obligations": 697,
-      "source": "AbstractRaft"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_OneLeaderPerTerm.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_OneLeaderPerTerm",
-      "backend": "codex",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "PASS",
-      "time_secs": 3707.4575798511505,
-      "error": "",
-      "input_tokens": 21594624,
-      "output_tokens": 102878,
-      "sany_valid": true,
-      "obligations": 518,
-      "source": "AbstractRaft"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_SameTermSameEntry.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_SameTermSameEntry",
-      "backend": "codex",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "PASS",
-      "time_secs": 5755.086594581604,
-      "error": "",
-      "input_tokens": 21813866,
-      "output_tokens": 127121,
-      "sany_valid": true,
-      "obligations": 1010,
-      "source": "AbstractRaft"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_SameTermSameLog.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_SameTermSameLog",
-      "backend": "codex",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "PASS",
-      "time_secs": 6698.064930438995,
-      "error": "",
-      "input_tokens": 35128438,
-      "output_tokens": 158778,
-      "sany_valid": true,
-      "obligations": 1750,
-      "source": "AbstractRaft"
     },
     {
       "benchmark": "Allocator/Allocator_InitMutex.tla",

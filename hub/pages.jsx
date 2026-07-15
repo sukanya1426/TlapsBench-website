@@ -131,7 +131,7 @@ function PageLeaderboard() {
             the cheat-checker (no admitted steps, smuggled axioms, or weakened theorems) and then be
             accepted by tlapm. The two benchmark modes, proof-completion and proof-from-scratch, are
             scored separately rather than blended into a single number. Expand a model to see the
-            same 71 specs used in the benchmark index in one continuous table, with per-spec
+            same 70 specs used in the benchmark index in one continuous table, with per-spec
             property pass counts for each mode. Filter by organization, or switch between one-shot
             and agent runs.
           </p>

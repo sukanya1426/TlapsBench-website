@@ -2,7 +2,7 @@
  "meta": {
   "backend": "copilot",
   "generated": "2026-07-07",
-  "note": "Consolidated copilot results for both benchmark modes, organized to match the README 'Benchmark problems' table (8 sources, 483 proof-completion + 231 proof-from-scratch = 714 canonical tasks). The 98 transient-infra (0-token) failures were re-run (agent produced real proofs) and re-graded locally with a rebuilt check_proof_bin; real PASS/FAIL/CHEATING verdicts merged in (regraded=true). Non-canonical duplicates excluded; 0 tasks missing, 0 residual infra/ERROR/TIMEOUT.",
+  "note": "Consolidated copilot results for both benchmark modes, organized to match the README 'Benchmark problems' table (7 sources, 483 proof-completion + 227 proof-from-scratch = 710 canonical tasks). The 98 transient-infra (0-token) failures were re-run (agent produced real proofs) and re-graded locally with a rebuilt check_proof_bin; real PASS/FAIL/CHEATING verdicts merged in (regraded=true). Non-canonical duplicates excluded; 0 tasks missing, 0 residual infra/ERROR/TIMEOUT.",
   "summary_by_mode": {
    "proof-completion": {
     "total": 483,
@@ -14,13 +14,13 @@
     "pass_rate": 69.2
    },
    "proof-from-scratch": {
-    "total": 231,
-    "PASS": 140,
-    "FAIL": 89,
+    "total": 227,
+    "PASS": 139,
+    "FAIL": 86,
     "CHEATING": 2,
     "ERROR": 0,
     "TIMEOUT": 0,
-    "pass_rate": 60.6
+    "pass_rate": 61.2
    }
   },
   "summary_by_source": {
@@ -104,22 +104,6 @@
      "pass_rate": 0.0
     }
    },
-   "AbstractRaft": {
-    "proof-completion": {
-     "total": 0,
-     "PASS": 0,
-     "FAIL": 0,
-     "CHEATING": 0,
-     "pass_rate": 0
-    },
-    "proof-from-scratch": {
-     "total": 4,
-     "PASS": 1,
-     "FAIL": 3,
-     "CHEATING": 0,
-     "pass_rate": 25.0
-    }
-   },
    "OpenAddressing (lemmy/Examples)": {
     "proof-completion": {
      "total": 1,
@@ -153,7 +137,7 @@
     }
    }
   },
-  "record_count": 714
+  "record_count": 710
  },
  "results": [
   {
@@ -8572,82 +8556,6 @@
    "sany_valid": true,
    "obligations": 31,
    "source": "tlaplus/Examples"
-  },
-  {
-   "benchmark": "AbstractRaft/AbstractRaft_LeaderComplete2.tla",
-   "module": "AbstractRaft",
-   "theorem": "AbstractRaft_LeaderComplete2",
-   "backend": "copilot",
-   "mode": "proof-from-scratch",
-   "agent_exit": 1,
-   "check_verdict": "FAIL",
-   "time_secs": 1847.1330091953278,
-   "error": "",
-   "input_tokens": 0,
-   "output_tokens": 133411,
-   "sany_valid": true,
-   "failed_gates": [
-    "B:discharge"
-   ],
-   "obligations_failed": 1,
-   "obligations_total": 1,
-   "source": "AbstractRaft"
-  },
-  {
-   "benchmark": "AbstractRaft/AbstractRaft_OneLeaderPerTerm.tla",
-   "module": "AbstractRaft",
-   "theorem": "AbstractRaft_OneLeaderPerTerm",
-   "backend": "copilot",
-   "mode": "proof-from-scratch",
-   "agent_exit": 1,
-   "check_verdict": "PASS",
-   "time_secs": 1621.767261505127,
-   "error": "",
-   "input_tokens": 0,
-   "output_tokens": 134144,
-   "sany_valid": true,
-   "obligations": 653,
-   "source": "AbstractRaft"
-  },
-  {
-   "benchmark": "AbstractRaft/AbstractRaft_SameTermSameEntry.tla",
-   "module": "AbstractRaft",
-   "theorem": "AbstractRaft_SameTermSameEntry",
-   "backend": "copilot",
-   "mode": "proof-from-scratch",
-   "agent_exit": 1,
-   "check_verdict": "FAIL",
-   "time_secs": 6151.019426107407,
-   "error": "",
-   "input_tokens": 0,
-   "output_tokens": 370812,
-   "sany_valid": true,
-   "failed_gates": [
-    "B:discharge"
-   ],
-   "obligations_failed": 1,
-   "obligations_total": 1,
-   "source": "AbstractRaft"
-  },
-  {
-   "benchmark": "AbstractRaft/AbstractRaft_SameTermSameLog.tla",
-   "module": "AbstractRaft",
-   "theorem": "AbstractRaft_SameTermSameLog",
-   "backend": "copilot",
-   "mode": "proof-from-scratch",
-   "agent_exit": 1,
-   "check_verdict": "FAIL",
-   "time_secs": 2241.1050906181335,
-   "error": "",
-   "input_tokens": 0,
-   "output_tokens": 140486,
-   "sany_valid": true,
-   "failed_gates": [
-    "B:discharge"
-   ],
-   "obligations_failed": 1,
-   "obligations_total": 1,
-   "source": "AbstractRaft"
   },
   {
    "benchmark": "Allocator/Allocator_InitMutex.tla",

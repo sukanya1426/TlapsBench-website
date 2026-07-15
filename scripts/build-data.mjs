@@ -18,12 +18,11 @@ const CANONICAL = {
   "ZooKeeper (Remix)": [0, 18],
   "Ivy liveness": [0, 12],
   "etcd (Specula)": [0, 8],
-  "AbstractRaft": [0, 4],
   "OpenAddressing (lemmy/Examples)": [1, 5],
   "Anvil": [0, 1],
 };
-const RECORDS = 714;
-const SPECS = 71;
+const RECORDS = 710;
+const SPECS = 70;
 
 // The one hand-maintained table: display info per backend id.
 // name = agent (primary label); subname = the underlying model, shown below it.
@@ -57,7 +56,6 @@ const SOURCE_INFO = {
     name: "etcd (Specula)",
     url: "https://github.com/specula-org",
   },
-  AbstractRaft: { name: "AbstractRaft", url: null },
   "OpenAddressing (lemmy/Examples)": {
     name: "OpenAddressing",
     url: "https://github.com/lemmy/Examples",
@@ -99,7 +97,7 @@ const SPEC_URL = {
   // Compatibility with result bundles created before the benchmark rename.
   AnvilLock: "https://github.com/anvil-verifier/anvil/blob/main/src/tla_demo.rs",
 };
-const UNLINKED_SPECS = new Set(["AbstractRaft", "tlaplus_examples_GermanProtocol"]);
+const UNLINKED_SPECS = new Set(["tlaplus_examples_GermanProtocol"]);
 
 const displayName = (group) => {
   if (group === "AnvilLock") return "two_thread_mutex";
@@ -195,7 +193,7 @@ const models = resultFiles.map((f) => {
 
   // A model's result file also acts as a complete spec manifest. Compare the
   // source, raw group, and both mode counts so per-spec rows cannot silently
-  // drift between backends while preserving the same 714-record total.
+  // drift between backends while preserving the same 710-record total.
   const manifest = Object.values(bySpec)
     .map((spec) => ({
       source: spec.source,
@@ -296,7 +294,7 @@ const data = {
   metrics: [
     { id: "completion", name: "--mode proof-completion", blurb: "Pass rate on the 483 proof-completion properties.",
       tip: "The full proof scaffolding is provided, including inductive invariants, lemma decomposition, and preceding lemmas, and the model fills in one target proof." },
-    { id: "scratch", name: "--mode proof-from-scratch", blurb: "Pass rate on the 231 proof-from-scratch properties.",
+    { id: "scratch", name: "--mode proof-from-scratch", blurb: "Pass rate on the 227 proof-from-scratch properties.",
       tip: "Only the model and the target theorem statement remain; the model must invent the entire proof structure, including any helper lemmas." },
   ],
   categories,

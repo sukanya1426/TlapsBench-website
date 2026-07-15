@@ -23,5 +23,5 @@ After changing either input, rebuild the browser data:
 node scripts/build-data.mjs
 ```
 
-Use `node scripts/build-data.mjs --check` to validate all 714 records without
+Use `node scripts/build-data.mjs --check` to validate all 710 records without
 rewriting `data.js`.

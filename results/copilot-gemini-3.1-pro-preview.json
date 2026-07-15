@@ -2,7 +2,7 @@
   "meta": {
     "backend": "copilot-gemini-3.1-pro-preview",
     "generated": "2026-07-15",
-    "note": "Consolidated GitHub Copilot (Gemini 3.1 Pro Preview) results for both benchmark modes: 483 proof-completion and 231 proof-from-scratch canonical tasks. The one proof-from-scratch grader TIMEOUT was regraded from the unchanged archived final solution with the experiment checker and TLAPM; it completed as a genuine FAIL (167/1675 obligations failed). Non-canonical duplicates excluded; 0 tasks missing and 0 residual infra/ERROR/TIMEOUT.",
+    "note": "Consolidated GitHub Copilot (Gemini 3.1 Pro Preview) results for both benchmark modes: 483 proof-completion and 227 proof-from-scratch canonical tasks. The one proof-from-scratch grader TIMEOUT was regraded from the unchanged archived final solution with the experiment checker and TLAPM; it completed as a genuine FAIL (167/1675 obligations failed). Non-canonical duplicates excluded; 0 tasks missing and 0 residual infra/ERROR/TIMEOUT.",
     "summary_by_mode": {
       "proof-completion": {
         "total": 483,
@@ -14,13 +14,13 @@
         "pass_rate": 78.7
       },
       "proof-from-scratch": {
-        "total": 231,
+        "total": 227,
         "PASS": 130,
-        "FAIL": 75,
-        "CHEATING": 26,
+        "FAIL": 72,
+        "CHEATING": 25,
         "ERROR": 0,
         "TIMEOUT": 0,
-        "pass_rate": 56.3
+        "pass_rate": 57.3
       }
     },
     "summary_by_source": {
@@ -124,26 +124,6 @@
           "pass_rate": 0
         }
       },
-      "AbstractRaft": {
-        "proof-completion": {
-          "total": 0,
-          "PASS": 0,
-          "FAIL": 0,
-          "CHEATING": 0,
-          "ERROR": 0,
-          "TIMEOUT": 0,
-          "pass_rate": 0
-        },
-        "proof-from-scratch": {
-          "total": 4,
-          "PASS": 0,
-          "FAIL": 3,
-          "CHEATING": 1,
-          "ERROR": 0,
-          "TIMEOUT": 0,
-          "pass_rate": 0
-        }
-      },
       "OpenAddressing (lemmy/Examples)": {
         "proof-completion": {
           "total": 1,
@@ -185,7 +165,7 @@
         }
       }
     },
-    "record_count": 714
+    "record_count": 710
   },
   "results": [
     {
@@ -9381,33 +9361,6 @@
       "source": "TLAPS distribution examples"
     },
     {
-      "benchmark": "AbstractRaft/AbstractRaft_LeaderComplete2.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_LeaderComplete2",
-      "backend": "copilot-gemini-3.1-pro-preview",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "FAIL",
-      "time_secs": 1158.1566722393036,
-      "error": "",
-      "termination_reason": "OK",
-      "input_tokens": 0,
-      "output_tokens": 17485,
-      "infra_retries": 3,
-      "infra_retry_reasons": [
-        "Error: Authentication token found but could not be validated.",
-        "Error: Authentication token found but could not be validated.",
-        "Error: Failed to load models"
-      ],
-      "sany_valid": true,
-      "failed_gates": [
-        "B:discharge"
-      ],
-      "obligations_failed": 3,
-      "obligations_total": 19,
-      "source": "AbstractRaft"
-    },
-    {
       "benchmark": "Consensus/Voting_AllSafeAtZero.tla",
       "module": "Consensus",
       "theorem": "Voting_AllSafeAtZero",
@@ -9427,29 +9380,6 @@
       "sany_valid": true,
       "obligations": 1,
       "source": "TLAPS distribution examples"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_SameTermSameLog.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_SameTermSameLog",
-      "backend": "copilot-gemini-3.1-pro-preview",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "CHEATING",
-      "time_secs": 1523.2887303829193,
-      "error": "",
-      "termination_reason": "OK",
-      "input_tokens": 0,
-      "output_tokens": 117728,
-      "sany_valid": true,
-      "failed_gates": [
-        "B:discharge"
-      ],
-      "cheat_checks": [
-        "no_added_omitted"
-      ],
-      "obligations": 47,
-      "source": "AbstractRaft"
     },
     {
       "benchmark": "Consensus/PaxosProof_line130.tla",
@@ -9488,33 +9418,6 @@
       "sany_valid": true,
       "obligations": 1,
       "source": "TLAPS distribution examples"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_OneLeaderPerTerm.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_OneLeaderPerTerm",
-      "backend": "copilot-gemini-3.1-pro-preview",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "FAIL",
-      "time_secs": 1454.381109237671,
-      "error": "",
-      "termination_reason": "OK",
-      "input_tokens": 0,
-      "output_tokens": 69906,
-      "infra_retries": 3,
-      "infra_retry_reasons": [
-        "Error: Authentication token found but could not be validated.",
-        "Error: Authentication token found but could not be validated.",
-        "Error: Failed to load models"
-      ],
-      "sany_valid": true,
-      "failed_gates": [
-        "B:discharge"
-      ],
-      "obligations_failed": 1,
-      "obligations_total": 1,
-      "source": "AbstractRaft"
     },
     {
       "benchmark": "AtomicBakery/AtomicBakery_MutualExclusion.tla",
@@ -10032,27 +9935,6 @@
       "obligations_failed": 1,
       "obligations_total": 11,
       "source": "OpenAddressing (lemmy/Examples)"
-    },
-    {
-      "benchmark": "AbstractRaft/AbstractRaft_SameTermSameEntry.tla",
-      "module": "AbstractRaft",
-      "theorem": "AbstractRaft_SameTermSameEntry",
-      "backend": "copilot-gemini-3.1-pro-preview",
-      "mode": "proof-from-scratch",
-      "agent_exit": 0,
-      "check_verdict": "FAIL",
-      "time_secs": 4082.4120604991913,
-      "error": "",
-      "termination_reason": "OK",
-      "input_tokens": 0,
-      "output_tokens": 160805,
-      "sany_valid": true,
-      "failed_gates": [
-        "B:discharge"
-      ],
-      "obligations_failed": 1,
-      "obligations_total": 1,
-      "source": "AbstractRaft"
     },
     {
       "benchmark": "Paxos/Paxos_Invariant.tla",

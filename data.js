@@ -17,7 +17,7 @@ window.TLAPS_DATA = {
     {
       "id": "scratch",
       "name": "--mode proof-from-scratch",
-      "blurb": "Pass rate on the 231 proof-from-scratch properties.",
+      "blurb": "Pass rate on the 227 proof-from-scratch properties.",
       "tip": "Only the model and the target theorem statement remain; the model must invent the entire proof structure, including any helper lemmas."
     }
   ],
@@ -34,11 +34,11 @@ window.TLAPS_DATA = {
     {
       "id": "systems",
       "name": "Systems specifications",
-      "blurb": "Proof properties from protocol and system specifications drawn from ZooKeeper, Ivy, etcd, AbstractRaft, OpenAddressing, and Anvil, emphasizing realistic verification targets.",
-      "specCount": 12,
+      "blurb": "Proof properties from protocol and system specifications drawn from ZooKeeper, Ivy, etcd, OpenAddressing, and Anvil, emphasizing realistic verification targets.",
+      "specCount": 11,
       "completion": 1,
-      "scratch": 48,
-      "total": 49
+      "scratch": 44,
+      "total": 45
     }
   ],
   "specs": [
@@ -940,19 +940,6 @@ window.TLAPS_DATA = {
       "total": 6
     },
     {
-      "id": "abstractraft--abstractraft",
-      "group": "AbstractRaft",
-      "name": "AbstractRaft",
-      "category": "systems",
-      "sourceKey": "AbstractRaft",
-      "sourceName": "AbstractRaft",
-      "sourceUrl": null,
-      "url": null,
-      "completion": 0,
-      "scratch": 4,
-      "total": 4
-    },
-    {
       "id": "anvil--anvillock",
       "group": "AnvilLock",
       "name": "two_thread_mutex",
@@ -977,17 +964,9 @@ window.TLAPS_DATA = {
       "generated": "2026-07-07",
       "perMetric": {
         "completion": 91.3,
-        "scratch": 80.1
+        "scratch": 80.2
       },
       "perSpec": {
-        "abstractraft--abstractraft": {
-          "completion": null,
-          "scratch": {
-            "rate": 75,
-            "pass": 3,
-            "total": 4
-          }
-        },
         "anvil--anvillock": {
           "completion": null,
           "scratch": {
@@ -1764,17 +1743,9 @@ window.TLAPS_DATA = {
       "generated": "2026-07-15",
       "perMetric": {
         "completion": 78.7,
-        "scratch": 56.3
+        "scratch": 57.3
       },
       "perSpec": {
-        "abstractraft--abstractraft": {
-          "completion": null,
-          "scratch": {
-            "rate": 0,
-            "pass": 0,
-            "total": 4
-          }
-        },
         "anvil--anvillock": {
           "completion": null,
           "scratch": {
@@ -2551,17 +2522,9 @@ window.TLAPS_DATA = {
       "generated": "2026-07-07",
       "perMetric": {
         "completion": 69.2,
-        "scratch": 60.6
+        "scratch": 61.2
       },
       "perSpec": {
-        "abstractraft--abstractraft": {
-          "completion": null,
-          "scratch": {
-            "rate": 25,
-            "pass": 1,
-            "total": 4
-          }
-        },
         "anvil--anvillock": {
           "completion": null,
           "scratch": {
