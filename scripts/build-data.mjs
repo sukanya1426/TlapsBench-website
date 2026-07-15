@@ -29,6 +29,7 @@ const SPECS = 71;
 // name = agent (primary label); subname = the underlying model, shown below it.
 const BACKEND_INFO = {
   copilot: { name: "GitHub Copilot", subname: "Opus-4.8", org: "GitHub", logo: null, kind: "agent" },
+  "copilot-gemini-3.1-pro-preview": { name: "GitHub Copilot", subname: "Gemini 3.1 Pro Preview", org: "GitHub", logo: null, kind: "agent" },
   codex: { name: "OpenAI Codex", subname: "gpt-5.5", org: "OpenAI", logo: null, kind: "agent" },
 };
 

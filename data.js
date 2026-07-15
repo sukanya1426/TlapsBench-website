@@ -1755,6 +1755,793 @@ window.TLAPS_DATA = {
       }
     },
     {
+      "id": "copilot-gemini-3.1-pro-preview",
+      "name": "GitHub Copilot",
+      "subname": "Gemini 3.1 Pro Preview",
+      "org": "GitHub",
+      "logo": null,
+      "kind": "agent",
+      "generated": "2026-07-15",
+      "perMetric": {
+        "completion": 78.7,
+        "scratch": 56.3
+      },
+      "perSpec": {
+        "abstractraft--abstractraft": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 4
+          }
+        },
+        "anvil--anvillock": {
+          "completion": null,
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "etcd-specula--etcd-raft": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 8
+          }
+        },
+        "ivy-liveness--ivy-examples-alternating-bit-protocol": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 2
+          }
+        },
+        "ivy-liveness--ivy-examples-hybrid-reliable-broadcast-cisa": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 3
+          }
+        },
+        "ivy-liveness--ivy-examples-split-queue-2-new": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 1
+          }
+        },
+        "ivy-liveness--ivy-examples-ticket": {
+          "completion": null,
+          "scratch": {
+            "rate": 50,
+            "pass": 1,
+            "total": 2
+          }
+        },
+        "ivy-liveness--ivy-examples-ticket-nested": {
+          "completion": null,
+          "scratch": {
+            "rate": 50,
+            "pass": 1,
+            "total": 2
+          }
+        },
+        "ivy-liveness--ivy-examples-tlb": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 2
+          }
+        },
+        "openaddressing-lemmy-examples--openaddressing": {
+          "completion": {
+            "rate": 0,
+            "pass": 0,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-allocator": {
+          "completion": {
+            "rate": 85.7,
+            "pass": 12,
+            "total": 14
+          },
+          "scratch": {
+            "rate": 80,
+            "pass": 4,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-bakery-boulangerie": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 50,
+            "pass": 2,
+            "total": 4
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-barriers": {
+          "completion": {
+            "rate": 81.8,
+            "pass": 9,
+            "total": 11
+          },
+          "scratch": {
+            "rate": 40,
+            "pass": 2,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-bcastbyz": {
+          "completion": {
+            "rate": 92.3,
+            "pass": 12,
+            "total": 13
+          },
+          "scratch": {
+            "rate": 60,
+            "pass": 3,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-blockingqueue": {
+          "completion": {
+            "rate": 87.5,
+            "pass": 7,
+            "total": 8
+          },
+          "scratch": {
+            "rate": 80,
+            "pass": 4,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-byihive": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-byzpaxos": {
+          "completion": {
+            "rate": 85.4,
+            "pass": 35,
+            "total": 41
+          },
+          "scratch": {
+            "rate": 36.4,
+            "pass": 4,
+            "total": 11
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-cigarettesmokers": {
+          "completion": {
+            "rate": 87.5,
+            "pass": 7,
+            "total": 8
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-coffeecan": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-diehard": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-ewd687a": {
+          "completion": {
+            "rate": 68.8,
+            "pass": 11,
+            "total": 16
+          },
+          "scratch": {
+            "rate": 33.3,
+            "pass": 1,
+            "total": 3
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-ewd840": {
+          "completion": {
+            "rate": 78.6,
+            "pass": 11,
+            "total": 14
+          },
+          "scratch": {
+            "rate": 80,
+            "pass": 4,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-ewd998": {
+          "completion": {
+            "rate": 42.3,
+            "pass": 22,
+            "total": 52
+          },
+          "scratch": {
+            "rate": 28.6,
+            "pass": 2,
+            "total": 7
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-finitemonotonic": {
+          "completion": {
+            "rate": 92.9,
+            "pass": 13,
+            "total": 14
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 3
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-germanprotocol": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-glowingraccoon": {
+          "completion": {
+            "rate": 83.3,
+            "pass": 5,
+            "total": 6
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 3,
+            "total": 3
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-keyvaluestore": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-lamport-mutex": {
+          "completion": {
+            "rate": 90,
+            "pass": 18,
+            "total": 20
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-learnproofs": {
+          "completion": {
+            "rate": 100,
+            "pass": 5,
+            "total": 5
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 6,
+            "total": 6
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-locks-auxiliary-vars": {
+          "completion": {
+            "rate": 77.8,
+            "pass": 7,
+            "total": 9
+          },
+          "scratch": {
+            "rate": 80,
+            "pass": 4,
+            "total": 5
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-loopinvariance": {
+          "completion": {
+            "rate": 58.8,
+            "pass": 10,
+            "total": 17
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 3
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-majority": {
+          "completion": {
+            "rate": 88.9,
+            "pass": 8,
+            "total": 9
+          },
+          "scratch": null
+        },
+        "tlaplus-examples--tlaplus-examples-misrareachability": {
+          "completion": {
+            "rate": 87.5,
+            "pass": 7,
+            "total": 8
+          },
+          "scratch": {
+            "rate": 50,
+            "pass": 1,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-missionariesandcannibals": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-multicarelevator": {
+          "completion": {
+            "rate": 100,
+            "pass": 9,
+            "total": 9
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-paxos": {
+          "completion": {
+            "rate": 100,
+            "pass": 3,
+            "total": 3
+          },
+          "scratch": {
+            "rate": 75,
+            "pass": 3,
+            "total": 4
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-paxoshowtowinaturingaward": {
+          "completion": {
+            "rate": 77.8,
+            "pass": 7,
+            "total": 9
+          },
+          "scratch": {
+            "rate": 83.3,
+            "pass": 5,
+            "total": 6
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-readerswriters": {
+          "completion": {
+            "rate": 100,
+            "pass": 3,
+            "total": 3
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-spanning": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-spanningtree": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-asynchronousinterface": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-cachingmemory": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-composing": {
+          "completion": {
+            "rate": 100,
+            "pass": 4,
+            "total": 4
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-fifo": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-hourclock": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": null
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-liveness": {
+          "completion": {
+            "rate": 100,
+            "pass": 3,
+            "total": 3
+          },
+          "scratch": null
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-realtime": {
+          "completion": {
+            "rate": 100,
+            "pass": 3,
+            "total": 3
+          },
+          "scratch": null
+        },
+        "tlaplus-examples--tlaplus-examples-specifyingsystems-tlc": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-sums-even": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-tcp": {
+          "completion": {
+            "rate": 68.8,
+            "pass": 11,
+            "total": 16
+          },
+          "scratch": {
+            "rate": 66.7,
+            "pass": 2,
+            "total": 3
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-teachingconcurrency": {
+          "completion": {
+            "rate": 100,
+            "pass": 8,
+            "total": 8
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 8,
+            "total": 8
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-tencentpaxos": {
+          "completion": {
+            "rate": 52.6,
+            "pass": 10,
+            "total": 19
+          },
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 2
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-termination": {
+          "completion": {
+            "rate": 100,
+            "pass": 4,
+            "total": 4
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-transaction-commit": {
+          "completion": {
+            "rate": 91.7,
+            "pass": 11,
+            "total": 12
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 4,
+            "total": 4
+          }
+        },
+        "tlaplus-examples--tlaplus-examples-twophase": {
+          "completion": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          }
+        },
+        "tlaps-distribution-examples--allocator": {
+          "completion": {
+            "rate": 100,
+            "pass": 10,
+            "total": 10
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 4,
+            "total": 4
+          }
+        },
+        "tlaps-distribution-examples--atomicbakery": {
+          "completion": {
+            "rate": 0,
+            "pass": 0,
+            "total": 8
+          },
+          "scratch": {
+            "rate": 50,
+            "pass": 1,
+            "total": 2
+          }
+        },
+        "tlaps-distribution-examples--bakery": {
+          "completion": null,
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaps-distribution-examples--bubblesort": {
+          "completion": {
+            "rate": 100,
+            "pass": 8,
+            "total": 8
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 3,
+            "total": 3
+          }
+        },
+        "tlaps-distribution-examples--cantor": {
+          "completion": {
+            "rate": 100,
+            "pass": 11,
+            "total": 11
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 10,
+            "total": 10
+          }
+        },
+        "tlaps-distribution-examples--consensus": {
+          "completion": {
+            "rate": 84,
+            "pass": 21,
+            "total": 25
+          },
+          "scratch": {
+            "rate": 70,
+            "pass": 7,
+            "total": 10
+          }
+        },
+        "tlaps-distribution-examples--data": {
+          "completion": {
+            "rate": 73.3,
+            "pass": 11,
+            "total": 15
+          },
+          "scratch": {
+            "rate": 66.7,
+            "pass": 6,
+            "total": 9
+          }
+        },
+        "tlaps-distribution-examples--euclid": {
+          "completion": {
+            "rate": 100,
+            "pass": 6,
+            "total": 6
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 5,
+            "total": 5
+          }
+        },
+        "tlaps-distribution-examples--ewd840": {
+          "completion": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaps-distribution-examples--paxos": {
+          "completion": {
+            "rate": 84.6,
+            "pass": 11,
+            "total": 13
+          },
+          "scratch": {
+            "rate": 16.7,
+            "pass": 1,
+            "total": 6
+          }
+        },
+        "tlaps-distribution-examples--peterson": {
+          "completion": null,
+          "scratch": {
+            "rate": 50,
+            "pass": 1,
+            "total": 2
+          }
+        },
+        "tlaps-distribution-examples--record": {
+          "completion": null,
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "tlaps-distribution-examples--simplemutex": {
+          "completion": {
+            "rate": 80,
+            "pass": 4,
+            "total": 5
+          },
+          "scratch": {
+            "rate": 100,
+            "pass": 2,
+            "total": 2
+          }
+        },
+        "tlaps-distribution-examples--sumandmax": {
+          "completion": null,
+          "scratch": {
+            "rate": 100,
+            "pass": 1,
+            "total": 1
+          }
+        },
+        "zookeeper-remix--zookeeper": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 9
+          }
+        },
+        "zookeeper-remix--zookeeper-lowlevel": {
+          "completion": null,
+          "scratch": {
+            "rate": 0,
+            "pass": 0,
+            "total": 9
+          }
+        }
+      }
+    },
+    {
       "id": "copilot",
       "name": "GitHub Copilot",
       "subname": "Opus-4.8",
