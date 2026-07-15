@@ -31,7 +31,7 @@ export const SITE = {
     { id: "libraries", name: "Example libraries",
       blurb: "Specifications and their proof properties from the official TLA+ Examples repository and the TLAPS distribution, ranging from teaching exercises to distributed algorithms." },
     { id: "systems", name: "Systems specifications",
-      blurb: "Proof properties from protocol and system specifications drawn from ZooKeeper, Ivy, etcd, AbstractRaft, OpenAddressing, and Anvil, emphasizing realistic verification targets." },
+      blurb: "Proof properties from protocol and system specifications drawn from ZooKeeper, Ivy, etcd, OpenAddressing, and Anvil, emphasizing realistic verification targets." },
   ],
 
   coverage: [],

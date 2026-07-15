@@ -209,7 +209,7 @@ table.breakdown tbody tr:last-child td { border-bottom: none; }
 .bd-num { font-family: var(--mono); font-weight: 400; font-size: 11px; color: var(--ink-3); text-align: right; font-variant-numeric: tabular-nums; }
 .bd-na { display: inline-flex; justify-content: center; width: 180px; font-family: var(--mono); font-size: 13px; color: var(--ink-3); }
 
-/* Benchmark dataset hierarchy and 71-spec index. */
+/* Benchmark dataset hierarchy and 70-spec index. */
 .dataset-facts { display: flex; align-items: stretch; gap: 10px; margin-top: 28px; max-width: 720px; }
 .dataset-fact { min-width: 132px; padding: 13px 17px; border: 1px solid var(--line-soft); border-radius: 9px; background: var(--paper); }
 .dataset-fact strong { display: block; font-family: var(--serif); font-size: 26px; line-height: 1; color: var(--ink); }
