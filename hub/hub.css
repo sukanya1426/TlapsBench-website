@@ -186,7 +186,7 @@ table.lb tr.expand-row > td { padding: 0; border-bottom: 1px solid var(--line-so
 .modelname { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 10px; }
 .modelname-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
 .modelname-main { font-weight: 600; }
-.modelname-sub { font-family: var(--mono); font-size: 10.5px; font-weight: 400; color: var(--ink-3); letter-spacing: 0.02em; margin-top: 2px; }
+.modelname-sub { font-family: var(--mono); font-size: 11.5px; font-weight: 500; color: var(--ink-2); letter-spacing: 0.02em; margin-top: 2px; }
 .expand-cell { width: 32px; text-align: center !important; }
 .expand-toggle { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: var(--ink-3); font-size: 14px; cursor: pointer; transition: color 180ms, transform 260ms; }
 .expand-toggle:hover { color: var(--ink); }

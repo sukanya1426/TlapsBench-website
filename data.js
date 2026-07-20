@@ -975,8 +975,8 @@ window.TLAPS_DATA = {
   "models": [
     {
       "id": "codex",
-      "name": "OpenAI Codex",
-      "subname": "gpt-5.5",
+      "name": "GPT-5.5",
+      "subname": "OpenAI Codex",
       "org": "OpenAI",
       "logo": null,
       "kind": "agent",
@@ -2643,8 +2643,8 @@ window.TLAPS_DATA = {
     },
     {
       "id": "copilot-gemini-3.1-pro-preview",
-      "name": "GitHub Copilot",
-      "subname": "Gemini 3.1 Pro Preview",
+      "name": "Gemini 3.1 Pro Preview",
+      "subname": "GitHub Copilot",
       "org": "GitHub",
       "logo": null,
       "kind": "agent",
@@ -4311,8 +4311,8 @@ window.TLAPS_DATA = {
     },
     {
       "id": "copilot",
-      "name": "GitHub Copilot",
-      "subname": "Opus-4.8",
+      "name": "Opus-4.8",
+      "subname": "GitHub Copilot",
       "org": "GitHub",
       "logo": null,
       "kind": "agent",
